@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "firebase": "^9.0.2",
+    "lodash": "^4.17.21",
+    "vue": "^2.6.11",
+    "vue-firestore": "^0.3.30"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

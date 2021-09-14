@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "firebase": "^7.13.1",
-    "vue-firestore": "^0.3.30"
-  }
-}
