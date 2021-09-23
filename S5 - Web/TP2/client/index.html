@@ -16,12 +16,12 @@
 
 <body>
     <div id="app">
-        <form v-on:submit="ajouterRestaurant">
+        <form v-on:submit="ajouterRestaurant(event)">
             <label>
-                Nom : <input type="text" required v-model="nom">
+                Nom : <input name="nom" type="text" required v-model="nom">
             </label>
             <label>
-                Cuisine : <input type="text" required v-model="cuisine">
+                Cuisine : <input name="cuisine" type="text" required v-model="cuisine">
             </label>
 
             <button>Ajouter</button>
@@ -33,20 +33,21 @@
         <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">Précédent</button>
         <button v-if="page === 0 || restaurants == 0" disabled>Précédent</button>
 
+        <label> Page {{page}} </label>
+
         <button v-if="page >= 0 && page != nbPagesTotal && restaurants != 0" @click="pageSuivante()">Suivant</button>
         <button v-if="page === nbPagesTotal || restaurants == 0" disabled>Suivant</button>
 
         <br><br>
 
         <div>
-            <input type="range" id="sliderPage" min="0" max="100" value="0" step="5"
-                @change="getRestaurantsFromServer()">
-            <label for="numPageSlider">{{sliderValue}} restaurant(s) par page</label>
+            <input type="range" id="sliderPage" min="0" max="100" v-model="pagesize" step="5"
+                @input="getRestaurantsFromServer()"> {{pagesize}} restaurant(s) par page
         </div>
         
         <br>
 
-        <input type="text" placeholder="Nom du restaurant" @input="getRestaurantByName()">
+        <input type="text" id="restaurantName" placeholder="Nom du restaurant" @input="getRestaurantByName()">
         
         <br><br>
 
@@ -56,7 +57,7 @@
                 <th>Cuisine </th>
             </tr>
             <tbody>
-                <tr v-for="r,index in restaurants" v-on:click="supprimerRestaurant(index)"
+                <tr v-for="r,index in restaurants" v-on:click="supprimerRestaurant(r)"
                     v-bind:style="{backgroundColor:getColor(index)}">
                     <td>{{r.name}}</td>
                     <td> {{r.cuisine}}</td>

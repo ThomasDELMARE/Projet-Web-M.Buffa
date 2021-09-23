@@ -12,22 +12,30 @@ function init() {
             pagesize: 10,
             nbPagesTotal: 0,
             dernierePage: 0,
-            sliderValue:0
+            sliderValue: 0,
+            restaurantName: ""
         },
         methods: {
-            supprimerRestaurant(index) {
-                this.restaurants.splice(index, 1);
-            },
-            ajouterRestaurant(event) {
-                // eviter le comportement par defaut
-                event.preventDefault();
+            supprimerRestaurant(r) {
+                let restaurantASupprimer = r._id;
+                let url = "http://localhost:8080/api/restaurants/" + restaurantASupprimer;
 
-                this.restaurants.push(
-                    {
-                        nom: this.nom,
-                        cuisine: this.cuisine
-                    }
-                );
+                fetch(url, {
+                    method: "DELETE"
+                })
+                    .then((responseJSON) => {
+                        responseJSON.json()
+                            .then((res) => {
+                                // Maintenant res est un vrai objet JavaScript
+                                console.log("Restaurant ajouté, " + res.msg);
+                                // On rafraichit la vue
+                                this.getRestaurantsFromServer()
+                            });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+
                 this.nom = "";
                 this.cuisine = "";
             },
@@ -36,10 +44,15 @@ function init() {
             },
             getRestaurantsFromServer() {
                 this.sliderValue = document.getElementById("sliderPage").value;
+                this.restaurantName = document.getElementById("restaurantName").value;
 
                 let url = "http://localhost:8080/api/restaurants?";
                 url += "page=" + this.page;
                 url += "&pagesize=" + this.sliderValue;
+
+                if (this.restaurantName != null || this.restaurantName != "") {
+                    url += "&name=" + this.restaurantName;
+                }
 
                 fetch(url)
                     // On obtient la réponse en JSON
@@ -48,13 +61,13 @@ function init() {
                         responseJSON.json()
                             .then((res) => {
                                 // Maintenant res est un vrai objet JavaScript
-                                if(this.sliderValue == 0){
+                                if (this.sliderValue == 0) {
                                     this.restaurants = [];
                                 }
-                                else{
+                                else {
                                     this.restaurants = res.data;
                                 }
-                                
+
                                 this.nbRestaurantsTotal = res.count;
                                 this.nbPagesTotal = Math.round(this.nbRestaurantsTotal / this.pagesize);
                             });
@@ -78,9 +91,38 @@ function init() {
                 this.page--;
                 this.getRestaurantsFromServer()
             },
-            getRestaurantByName(){
-                
-            }
+            getRestaurantByName:
+                _.debounce(function () {
+                    this.getRestaurantsFromServer();
+                }, 1000),
+            ajouterRestaurant(event) {
+                // eviter le comportement par defaut
+                event.preventDefault();
+
+                let form = event.target;
+                let donneesFormulaire = new FormData(form);
+                let url = "http://localhost:8080/api/restaurants";
+
+                fetch(url, {
+                    method: "POST",
+                    body: donneesFormulaire
+                })
+                    .then((responseJSON) => {
+                        responseJSON.json()
+                            .then((res) => {
+                                // Maintenant res est un vrai objet JavaScript
+                                console.log("Restaurant ajouté, " + res.msg);
+                                // On rafraichit la vue
+                                this.getRestaurantsFromServer()
+                            });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+
+                this.nom = "";
+                this.cuisine = "";
+            },
         },
         mounted() {
             console.log("AVANT RENDU HTML");
