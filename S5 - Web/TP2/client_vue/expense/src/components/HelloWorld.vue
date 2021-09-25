@@ -1,9 +1,12 @@
 <template>
   <div id="HelloWorld">
     <form v-on:submit="ajouterRestaurant">
-      <label> Nom : <input type="text" required v-model="nom" /> </label>
       <label>
-        Cuisine : <input type="text" required v-model="cuisine" />
+        Nom : <input name="nom" type="text" required v-model="nom" />
+      </label>
+      <label>
+        Cuisine :
+        <input name="cuisine" type="text" required v-model="cuisine" />
       </label>
 
       <button>Ajouter</button>
@@ -12,20 +15,13 @@
     <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1>
     <p>Nb pages totales : {{ nbPagesTotal }}</p>
 
-    <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">
-      Précédent
-    </button>
-    <button v-if="page === 0 || restaurants == 0" disabled>Précédent</button>
+    <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">Précédent</button>
+        <button v-if="page === 0 || restaurants == 0" disabled>Précédent</button>
 
-    <button
-      v-if="page >= 0 && page != nbPagesTotal && restaurants != 0"
-      @click="pageSuivante()"
-    >
-      Suivant
-    </button>
-    <button v-if="page === nbPagesTotal || restaurants == 0" disabled>
-      Suivant
-    </button>
+        <label> Page {{page}} </label>
+
+        <button v-if="page >= 0 && page != nbPagesTotal && restaurants != 0" @click="pageSuivante()">Suivant</button>
+        <button v-if="page === nbPagesTotal || restaurants == 0" disabled>Suivant</button>
 
     <br /><br />
 
@@ -48,6 +44,7 @@
 
     <input
       type="text"
+      id="restaurantName"
       placeholder="Nom du restaurant"
       @input="getRestaurantByName()"
     />
@@ -55,11 +52,15 @@
     <br /><br />
 
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
-      <md-table-toolbar >
+      <md-table-toolbar>
         <h1 class="md-title">Restaurants</h1>
       </md-table-toolbar>
 
-      <md-table-row slot="md-table-row"  v-on:click="supprimerRestaurant(index)" slot-scope="{ item }">
+      <md-table-row
+        slot="md-table-row"
+        v-on:click="supprimerRestaurant(item)"
+        slot-scope="{ item }"
+      >
         <md-table-cell md-label="Nom">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Cuisine">{{ item.cuisine }}</md-table-cell>
       </md-table-row>
@@ -68,7 +69,7 @@
 </template>
 
 <script>
-// import _ from "lodash";
+import _ from "lodash";
 
 export default {
   name: "HelloWorld",
@@ -84,17 +85,49 @@ export default {
     sliderValue: 0,
   }),
   methods: {
-    supprimerRestaurant(index) {
-      this.restaurants.splice(index, 1);
+    supprimerRestaurant(restaurant) {
+      let restaurantASupprimer = restaurant._id;
+      let url = "http://localhost:8080/api/restaurants/" + restaurantASupprimer;
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((responseJSON) => {
+          responseJSON.json().then((res) => {
+            // Maintenant res est un vrai objet JavaScript
+            console.log("Restaurant ajouté, " + res.msg);
+            // On rafraichit la vue
+            this.getRestaurantsFromServer();
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     ajouterRestaurant(event) {
       // eviter le comportement par defaut
       event.preventDefault();
 
-      this.restaurants.push({
-        nom: this.nom,
-        cuisine: this.cuisine,
-      });
+      let form = event.target;
+      let donneesFormulaire = new FormData(form);
+      let url = "http://localhost:8080/api/restaurants";
+
+      fetch(url, {
+        method: "POST",
+        body: donneesFormulaire,
+      })
+        .then((responseJSON) => {
+          responseJSON.json().then((res) => {
+            // Maintenant res est un vrai objet JavaScript
+            console.log("Restaurant ajouté, " + res.msg);
+            // On rafraichit la vue
+            this.getRestaurantsFromServer();
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       this.nom = "";
       this.cuisine = "";
     },
@@ -103,10 +136,16 @@ export default {
     },
     getRestaurantsFromServer() {
       this.sliderValue = document.getElementById("sliderPage").value;
+      this.restaurantName = document.getElementById("restaurantName").value;
+      this.pagesize = this.sliderValue;
 
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
       url += "&pagesize=" + this.sliderValue;
+
+      if (this.restaurantName != null || this.restaurantName != "") {
+        url += "&name=" + this.restaurantName;
+      }
 
       fetch(url)
         // On obtient la réponse en JSON
@@ -124,6 +163,15 @@ export default {
             this.nbPagesTotal = Math.round(
               this.nbRestaurantsTotal / this.pagesize
             );
+
+            // Afin de prévoir qu'il n'y ait pas une page en trop affichée
+           if(this.nbRestaurantsTotal%this.nbPagesTotal != 0){
+             this.nbPagesTotal--;
+           }
+
+            console.log("pagesize " + this.pagesize);
+            console.log("total " + this.nbRestaurantsTotal)
+            console.log("calcul " + this.nbPagesTotal);
           });
         })
         .catch(function (err) {
@@ -145,7 +193,11 @@ export default {
       this.page--;
       this.getRestaurantsFromServer();
     },
-    getRestaurantByName() {},
+    getRestaurantByName: _.debounce(function () {
+      // Prévoir le fait que l'utilisateur puisse faire une recherche sans revenir à la première page
+      this.page = 0;
+      this.getRestaurantsFromServer();
+    }, 1000),
   },
   mounted() {
     console.log("AVANT RENDU HTML");
@@ -170,7 +222,7 @@ li {
 a {
   color: #42b983;
 }
-.tab{
+.tab {
   text-align: center;
   color: #42b983;
 }
