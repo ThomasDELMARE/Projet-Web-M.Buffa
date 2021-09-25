@@ -4,12 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <script src="lib/vue.min.js"></script>
-    <script src="lib/lodash.min.js"></script>
+    <script src="src/lib/vue.min.js"></script>
+    <script src="src/lib/lodash.min.js"></script>
 
-    <script src="js/script.js"></script>
+    <script src="src/js/script.js"></script>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+
+    <!-- Stylesheet de Vue Material -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
 
     <title>Gestionnaire restaurants VueJS</title>
 </head>
@@ -51,19 +54,19 @@
         
         <br><br>
 
-        <table>
-            <tr>
+        <md-table>
+            <md-table-row>
                 <th>Nom</th>
                 <th>Cuisine </th>
-            </tr>
+            </md-table-row>
             <tbody>
-                <tr v-for="r,index in restaurants" v-on:click="supprimerRestaurant(r)"
+                <md-table-row v-for="r,index in restaurants" v-on:click="supprimerRestaurant(index)"
                     v-bind:style="{backgroundColor:getColor(index)}">
                     <td>{{r.name}}</td>
                     <td> {{r.cuisine}}</td>
-                </tr>
+                </md-table-row>
             </tbody>
-        </table>
+        </md-table>
     </div>
 </body>
 
