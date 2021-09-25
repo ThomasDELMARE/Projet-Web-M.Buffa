@@ -35,7 +35,7 @@
         id="sliderPage"
         min="0"
         max="100"
-        value="0"
+        value="10"
         step="5"
         @change="getRestaurantsFromServer()"
       />
@@ -54,23 +54,16 @@
 
     <br /><br />
 
-    <table>
-      <tr>
-        <th>Nom</th>
-        <th>Cuisine</th>
-      </tr>
-      <tbody>
-        <tr
-          v-for="(r, index) in restaurants"
-          v-on:click="supprimerRestaurant(index)"
-          v-bind:key="r"
-          v-bind:style="{ backgroundColor: getColor(index) }"
-        >
-          <td>{{ r.name }}</td>
-          <td>{{ r.cuisine }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
+      <md-table-toolbar >
+        <h1 class="md-title">Restaurants</h1>
+      </md-table-toolbar>
+
+      <md-table-row slot="md-table-row"  v-on:click="supprimerRestaurant(index)" slot-scope="{ item }">
+        <md-table-cell md-label="Nom">{{ item.name }}</md-table-cell>
+        <md-table-cell md-label="Cuisine">{{ item.cuisine }}</md-table-cell>
+      </md-table-row>
+    </md-table>
   </div>
 </template>
 
@@ -79,7 +72,6 @@
 
 export default {
   name: "HelloWorld",
-  el: "#app",
   data: () => ({
     restaurants: [],
     nom: "",
@@ -176,6 +168,10 @@ li {
   margin: 0 10px;
 }
 a {
+  color: #42b983;
+}
+.tab{
+  text-align: center;
   color: #42b983;
 }
 </style>

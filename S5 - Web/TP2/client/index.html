@@ -53,19 +53,19 @@
         
         <br><br>
 
-        <table>
-            <tr>
+        <md-table>
+            <md-table-row>
                 <th>Nom</th>
                 <th>Cuisine </th>
-            </tr>
+            </md-table-row>
             <tbody>
-                <tr v-for="r,index in restaurants" v-on:click="supprimerRestaurant(index)"
+                <md-table-row v-for="r,index in restaurants" v-on:click="supprimerRestaurant(index)"
                     v-bind:style="{backgroundColor:getColor(index)}">
                     <td>{{r.name}}</td>
                     <td> {{r.cuisine}}</td>
-                </tr>
+                </md-table-row>
             </tbody>
-        </table>
+        </md-table>
     </div>
 </body>
 
