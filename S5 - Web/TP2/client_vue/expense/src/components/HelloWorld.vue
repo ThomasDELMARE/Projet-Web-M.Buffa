@@ -15,13 +15,22 @@
     <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1>
     <p>Nb pages totales : {{ nbPagesTotal }}</p>
 
-    <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">Précédent</button>
-        <button v-if="page === 0 || restaurants == 0" disabled>Précédent</button>
+    <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">
+      Précédent
+    </button>
+    <button v-if="page === 0" disabled>Précédent</button>
 
-        <label> Page {{page}} </label>
+    <label> Page {{ page }} </label>
 
-        <button v-if="page >= 0 && page != nbPagesTotal && restaurants != 0" @click="pageSuivante()">Suivant</button>
-        <button v-if="page === nbPagesTotal || restaurants == 0" disabled>Suivant</button>
+    <button
+      v-if="page >= 0 && page != nbPagesTotal && restaurants != 0"
+      @click="pageSuivante()"
+    >
+      Suivant
+    </button>
+    <button v-if="page === nbPagesTotal || restaurants == 0" disabled>
+      Suivant
+    </button>
 
     <br /><br />
 
@@ -33,7 +42,7 @@
         max="100"
         value="10"
         step="5"
-        @change="getRestaurantsFromServer()"
+        @change="getRestaurantByName()"
       />
       <label for="numPageSlider"
         >{{ sliderValue }} restaurant(s) par page</label
@@ -163,15 +172,6 @@ export default {
             this.nbPagesTotal = Math.round(
               this.nbRestaurantsTotal / this.pagesize
             );
-
-            // Afin de prévoir qu'il n'y ait pas une page en trop affichée
-           if(this.nbRestaurantsTotal%this.nbPagesTotal != 0){
-             this.nbPagesTotal--;
-           }
-
-            console.log("pagesize " + this.pagesize);
-            console.log("total " + this.nbRestaurantsTotal)
-            console.log("calcul " + this.nbPagesTotal);
           });
         })
         .catch(function (err) {
