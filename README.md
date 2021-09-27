@@ -6,4 +6,4 @@ Repository perso pour l'année de M1 MIAGE
 
 1. git rm -r --cached .  
 2. git add .
-3. git commit -m 'Removing ignored files'
+3. git commit -m "Removing ignored files"
