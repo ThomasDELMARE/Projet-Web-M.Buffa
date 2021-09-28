@@ -5,8 +5,7 @@
         Nom : <input name="nom" type="text" required v-model="nom" />
       </label>
       <label>
-        Cuisine :
-        <input name="cuisine" type="text" required v-model="cuisine" />
+        Cuisine : <input name="cuisine" type="text" required v-model="cuisine" />
       </label>
 
       <button>Ajouter</button>
@@ -70,8 +69,8 @@
         v-on:click="supprimerRestaurant(item)"
         slot-scope="{ item }"
       >
-        <md-table-cell md-label="Nom">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Cuisine">{{ item.cuisine }}</md-table-cell>
+        <md-table-cell md-label="Nom" md-sort-by="name">{{ item.name }}</md-table-cell>
+        <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{ item.cuisine }}</md-table-cell>
       </md-table-row>
     </md-table>
   </div>
