@@ -1,18 +1,38 @@
 <template>
   <div id="HelloWorld">
+    <h1>Application de gestion de restaurants :</h1>
+
+    <br />
+
+    <!-- <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1> -->
+    <!-- <p>Nb pages totales : {{ nbPagesTotal }}</p> -->
+
     <form v-on:submit="ajouterRestaurant">
       <label>
-        Nom : <input name="nom" type="text" required v-model="nom" />
+        Nom : <md-input name="nom" type="text" required v-model="nom" />
       </label>
       <label>
-        Cuisine : <input name="cuisine" type="text" required v-model="cuisine" />
+        Cuisine :
+        <input name="cuisine" type="text" required v-model="cuisine" />
       </label>
 
       <button>Ajouter</button>
     </form>
 
-    <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1>
-    <p>Nb pages totales : {{ nbPagesTotal }}</p>
+    <br />
+
+    <form>
+      <label> Rechercher un restaurant : </label>
+
+      <input
+        type="text"
+        id="restaurantName"
+        placeholder="Nom du restaurant"
+        @input="getRestaurantByName()"
+      />
+    </form>
+
+    <br />
 
     <button v-if="page !== 0 && restaurants !== 0" @click="pagePrecedente()">
       Précédent
@@ -50,27 +70,23 @@
 
     <br />
 
-    <input
-      type="text"
-      id="restaurantName"
-      placeholder="Nom du restaurant"
-      @input="getRestaurantByName()"
-    />
-
-    <br /><br />
-
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Restaurants</h1>
       </md-table-toolbar>
 
-      <md-table-row
-        slot="md-table-row"
-        v-on:click="supprimerRestaurant(item)"
-        slot-scope="{ item }"
-      >
-        <md-table-cell md-label="Nom" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{ item.cuisine }}</md-table-cell>
+      <md-table-row slot="md-table-row" slot-scope="{ item }">
+        <md-table-cell md-label="Nom" md-sort-by="name">{{
+          item.name
+        }}</md-table-cell>
+        <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
+          item.cuisine
+        }}</md-table-cell>
+        <md-table-cell md-label="Action">
+          <router-link :to="'/details-restaurant/' + item._id"
+            >[Détails Restaurant]</router-link
+          >
+        </md-table-cell>
       </md-table-row>
     </md-table>
   </div>
