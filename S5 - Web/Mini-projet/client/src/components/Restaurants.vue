@@ -1,5 +1,5 @@
 <template>
-  <div id="HelloWorld">
+  <div id="Restaurants">
     <h1>Application de gestion de restaurants :</h1>
 
     <br />

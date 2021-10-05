@@ -5,7 +5,7 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
-import HelloWorld from './components/HelloWorld.vue'
+import Restaurants from './components/Restaurants.vue'
 import DetailsRestaurant from './components/DetailsRestaurant.vue'
 
 Vue.use(VueRouter)
@@ -19,7 +19,7 @@ const router = new VueRouter({
     [
       {
         path: "/",
-        component: HelloWorld
+        component: Restaurants
       },
       {
         path: "/details-restaurant/:id",
