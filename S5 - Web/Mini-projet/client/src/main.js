@@ -7,6 +7,7 @@ import 'vue-material/dist/theme/default.css'
 
 import Restaurants from './components/Restaurants.vue'
 import DetailsRestaurant from './components/DetailsRestaurant.vue'
+import CreationRestaurant from './components/CreationRestaurant.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
@@ -24,6 +25,12 @@ const router = new VueRouter({
       {
         path: "/details-restaurant/:id",
         component: DetailsRestaurant,
+        props: {
+        }
+      },
+      {
+        path: "/creation-restaurant",
+        component: CreationRestaurant,
         props: {
         }
       }
