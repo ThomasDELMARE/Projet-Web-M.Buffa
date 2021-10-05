@@ -9,7 +9,7 @@
 
     <form v-on:submit="ajouterRestaurant">
       <label>
-        Nom : <md-input name="nom" type="text" required v-model="nom" />
+        Nom : <input name="nom" type="text" required v-model="nom" />
       </label>
       <label>
         Cuisine :
@@ -29,6 +29,7 @@
         id="restaurantName"
         placeholder="Nom du restaurant"
         @input="getRestaurantByName()"
+        @keydown.enter.prevent
       />
     </form>
 
@@ -77,11 +78,20 @@
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Nom" md-sort-by="name">{{
-          item.name
+          item.cuisine
         }}</md-table-cell>
+
         <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
           item.cuisine
         }}</md-table-cell>
+
+        <md-table-cell
+          md-label="Ville"
+          md-sort-by="ville"
+          md-selected-value="pas de ville connue"
+          >{{ item.borough }}</md-table-cell
+        >
+
         <md-table-cell md-label="Action">
           <router-link :to="'/details-restaurant/' + item._id"
             >[Détails Restaurant]</router-link
@@ -89,6 +99,36 @@
         </md-table-cell>
       </md-table-row>
     </md-table>
+
+    <!-- Pas de résultats snackbar -->
+    <md-snackbar
+      :md-position="position"
+      :md-duration="duration"
+      :md-active.sync="showSnackbar"
+      md-persistent
+    >
+      <span>Aucun restaurant ne porte ce nom, réessayez votre recherche !</span>
+    </md-snackbar>
+
+    <!-- Buffa snackbar -->
+    <md-snackbar
+      :md-position="position"
+      :md-duration="duration"
+      :md-active.sync="showBuffaSnackbar"
+      md-persistent
+    >
+      <span>Bonjour Monsieur !</span>
+    </md-snackbar>
+
+    <!-- Obi Wan snackbar -->
+    <md-snackbar
+      :md-position="position"
+      :md-duration="duration"
+      :md-active.sync="showObiWanSnackbar"
+      md-persistent
+    >
+      <span>Hello there, que la force soit avec toi jeune padawan</span>
+    </md-snackbar>
   </div>
 </template>
 
@@ -107,6 +147,13 @@ export default {
     nbPagesTotal: 0,
     dernierePage: 0,
     sliderValue: 0,
+
+    // Snackbar stuff
+    showSnackbar: false,
+    showBuffaSnackbar: false,
+    showObiWanSnackbar: false,
+    position: "center",
+    duration: 4000,
   }),
   methods: {
     supprimerRestaurant(restaurant) {
@@ -177,6 +224,20 @@ export default {
           // On convertit la réponse JSON qui va la transformer en objet JS
           responseJSON.json().then((res) => {
             // Maintenant res est un vrai objet JavaScript
+
+            // On affiche la snackbar si le résultat est vide
+            if (res.count == 0) {
+              this.showSnackbar = true;
+            }
+
+            if(this.restaurantName == "Obi Wan") {
+              this.showObiWanSnackbar = true;
+            }
+
+            if (this.restaurantName == "Buffa") {
+              this.showBuffaSnackbar = true;
+            }
+
             if (this.sliderValue == 0) {
               this.restaurants = [];
             } else {
