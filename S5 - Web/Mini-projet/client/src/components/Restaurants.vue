@@ -276,7 +276,7 @@ export default {
     }, 1000),
   },
   mounted() {
-    console.log("AVANT RENDU HTML");
+    // console.log("AVANT RENDU HTML");
     this.getRestaurantsFromServer();
   },
 };

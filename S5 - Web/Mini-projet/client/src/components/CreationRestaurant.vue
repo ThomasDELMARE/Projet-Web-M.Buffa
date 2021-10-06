@@ -1,11 +1,7 @@
 <template>
   <div>
     <h1>Création d'un nouveau restaurant</h1>
-
-   <!-- <label>
-      Nom : <md-input name="nom" type="text" required v-model="nom" />
-    </label> -->
-
+    
     <form v-on:submit="ajouterRestaurant">
       <md-field>
         <label>Entrer un nom</label>
