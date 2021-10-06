@@ -1,10 +1,10 @@
 <template>
   <div id="DetailsRestaurant">
-    <h1>Détails du restaurant avec l'id {{idRestaurant}}</h1>
+    <h1>Détails du restaurant avec l'id {{ idRestaurant }}</h1>
     <ul>
-      <li>Nom : {{restaurant.name}}</li>
-      <li>Cuisine : {{restaurant.cuisine}}</li>
-      <li> Ville : {{restaurant.borough}}</li>
+      <li>Nom : {{ restaurant.name }}</li>
+      <li>Cuisine : {{ restaurant.cuisine }}</li>
+      <li>Ville : {{ restaurant.borough }}</li>
     </ul>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
     .then(reponse =>{
       return reponse.json();
     }).then(r => {
+      console.log("Le nom va être affiché.")
       console.log(r.restaurant.name)
       this.restaurant = r.restaurant;
     })

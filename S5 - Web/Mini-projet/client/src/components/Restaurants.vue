@@ -78,7 +78,7 @@
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Nom" md-sort-by="name">{{
-          item.cuisine
+          item.name
         }}</md-table-cell>
 
         <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
