@@ -71,12 +71,12 @@
 
     <br />
 
-    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
+    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card >
       <md-table-toolbar>
         <h1 class="md-title">Restaurants</h1>
       </md-table-toolbar>
 
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
+      <md-table-row slot="md-table-row" slot-scope="{ item }" v-on:click='testClick'>
         <md-table-cell md-label="Nom" md-sort-by="name">{{
           item.name
         }}</md-table-cell>
@@ -87,13 +87,13 @@
 
         <md-table-cell
           md-label="Ville"
-          md-sort-by="ville"
+          md-sort-by="borough"
           md-selected-value="pas de ville connue"
           >{{ item.borough }}</md-table-cell
         >
 
         <md-table-cell md-label="Action">
-          <router-link :to="'/details-restaurant/' + item._id"
+          <router-link :to="'/details-restaurant/' + item._id" v-on:click.prevent
             >[Détails Restaurant]</router-link
           >
         </md-table-cell>
@@ -277,11 +277,18 @@ export default {
       this.page = 0;
       this.getRestaurantsFromServer();
     }, 1000),
+
+    testClick() {
+      console.log("Test click")
+    },
+    doThis(){
+      console.log("wows")
+    }
   },
   mounted() {
     // console.log("AVANT RENDU HTML");
     this.getRestaurantsFromServer();
-    console.log(this.restauranto)
+    // console.log(this.restauranto)
   },
 };
 </script>
