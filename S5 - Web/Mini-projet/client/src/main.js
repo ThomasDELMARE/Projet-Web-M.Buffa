@@ -34,15 +34,10 @@ const router = new VueRouter({
       {
         path: "/details-restaurant/:id",
         component: DetailsRestaurant,
-        props: {
-          restauranto : Object
-        }
       },
       {
         path: "/creation-restaurant",
         component: CreationRestaurant,
-        props: {
-        }
       }
     ],
     mode:'history'
