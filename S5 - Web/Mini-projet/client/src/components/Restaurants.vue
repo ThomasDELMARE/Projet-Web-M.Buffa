@@ -71,12 +71,12 @@
 
     <br />
 
-    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card >
+    <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Restaurants</h1>
       </md-table-toolbar>
 
-      <md-table-row slot="md-table-row" slot-scope="{ item }" v-on:click='testClick'>
+      <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Nom" md-sort-by="name">{{
           item.name
         }}</md-table-cell>
@@ -92,10 +92,12 @@
           >{{ item.borough }}</md-table-cell
         >
 
-        <md-table-cell md-label="Action">
-          <router-link :to="'/details-restaurant/' + item._id" v-on:click.prevent
+        <md-table-cell md-label="Actions">
+          <!-- <router-link :to="'/details-restaurant/' + item._id"
             >[Détails Restaurant]</router-link
-          >
+          > -->
+          <md-button class="md-primary" :to="'/details-restaurant/' + item._id">DETAILS</md-button>
+          <md-button class="md-accent">SUPPRIMER</md-button>
         </md-table-cell>
       </md-table-row>
     </md-table>
@@ -139,7 +141,7 @@ export default {
   name: "Restaurants",
   data: () => ({
     restaurants: [],
-    restauranto : null,
+    restauranto: null,
     nom: "",
     cuisine: "",
     nbRestaurantsTotal: 0,
@@ -231,7 +233,7 @@ export default {
               this.showSnackbar = true;
             }
 
-            if(this.restaurantName == "Obi Wan") {
+            if (this.restaurantName == "Obi Wan") {
               this.showObiWanSnackbar = true;
             }
 
@@ -255,7 +257,7 @@ export default {
           console.log(err);
         });
 
-        this.restauranto = this.restaurants[0]
+      this.restauranto = this.restaurants[0];
     },
     pageSuivante() {
       if (this.page === this.nbPagesTotal) {
@@ -279,11 +281,11 @@ export default {
     }, 1000),
 
     testClick() {
-      console.log("Test click")
+      console.log("Test click");
     },
-    doThis(){
-      console.log("wows")
-    }
+    doThis() {
+      console.log("wows");
+    },
   },
   mounted() {
     // console.log("AVANT RENDU HTML");
