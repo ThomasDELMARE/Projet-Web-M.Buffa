@@ -127,7 +127,7 @@
       :md-active.sync="showObiWanSnackbar"
       md-persistent
     >
-      <span>Hello there, que la force soit avec toi jeune padawan</span>
+      <span>Salut petit scarabé, que la force soit avec toi jeune padawan</span>
     </md-snackbar>
   </div>
 </template>
