@@ -260,6 +260,9 @@ function modifierRestaurant(noLigne) {
     form.nom.value = nom;
     form.cuisine.value = cuisine;
     form._id.value = id;
+
+
+
 }
 
 // donnees de test

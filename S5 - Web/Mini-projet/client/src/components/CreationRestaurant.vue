@@ -1,144 +1,162 @@
 <template>
-    <div>
-        <h1> Création d'un nouveau restaurant</h1>
+  <div>
+    <h1>Création d'un nouveau restaurant</h1>
 
-        <form v-on:submit="ajouterRestaurant">
-            <md-field>
-                <label>Entrer un nom</label>
-                <md-input name="nom" type="text" required v-model="nom"></md-input>
-            </md-field>
+    <form v-on:submit="ajouterRestaurant">
+      <md-field>
+        <label>Entrer un nom</label>
+        <md-input name="nom" type="text" required v-model="nom"></md-input>
+      </md-field>
 
-            <md-field>
-                <label>Entrer la cuisine</label>
-                <md-input name="cuisine" type="text" required v-model="cuisine"></md-input>
-            </md-field>
+      <md-field>
+        <label>Entrer la cuisine</label>
+        <md-input
+          name="cuisine"
+          type="text"
+          required
+          v-model="cuisine"
+        ></md-input>
+      </md-field>
 
-            <md-field>
-                <label>Entrer un adresse</label>
-                <md-input name="adresse" type="text" required v-model="adresse"></md-input>
-            </md-field>
+      <md-field>
+        <label>Entrer un adresse</label>
+        <md-input
+          name="adresse"
+          type="text"
+          required
+          v-model="adresse"
+        ></md-input>
+      </md-field>
 
-            <md-field>
-                <label>Entrer une ville</label>
-                <md-input name="ville" type="text" required v-model="ville"></md-input>
-            </md-field>
+      <md-field>
+        <label>Entrer une ville</label>
+        <md-input name="ville" type="text" required v-model="ville"></md-input>
+      </md-field>
 
-            <md-field>
-                <label>Entrer un zipcode</label>
-                <md-input name="zipcode" type="text" required v-model="zipcode"></md-input>
-            </md-field>
+      <md-field>
+        <label>Entrer un zipcode</label>
+        <md-input
+          name="zipcode"
+          type="text"
+          required
+          v-model="zipcode"
+        ></md-input>
+      </md-field>
 
-            <md-field>
-                <label>Entrer un pays</label>
-                <md-input name="country" type="text" required v-model="country"></md-input>
-            </md-field>
+      <md-field>
+        <label>Entrer un pays</label>
+        <md-input
+          name="country"
+          type="text"
+          required
+          v-model="country"
+        ></md-input>
+      </md-field>
 
-            <button class="md-button md-raised">Ajouter</button>
-        </form>
+      <button class="md-button md-raised">Ajouter</button>
+    </form>
 
-        <p> {{lat}}  -  {{lng}} </p>
+    <p>{{ lat }} - {{ lng }}</p>
 
-        <!-- Ajout restaurant réussi snackbar -->
-        <md-snackbar
-        :md-position="position"
-        :md-duration="duration"
-        :md-active.sync="ajoutRestaurantSnackbar"
-        md-persistent
-        >
-        <span>Le restaurant a bien été ajouté !</span>
-        </md-snackbar>
-    </div>
+    <!-- Ajout restaurant réussi snackbar -->
+    <md-snackbar
+      :md-position="position"
+      :md-duration="duration"
+      :md-active.sync="ajoutRestaurantSnackbar"
+      md-persistent
+    >
+      <span>Le restaurant a bien été ajouté !</span>
+    </md-snackbar>  
+  </div>
 </template>
 
 <script>
-
-import places from 'places.js';
+import places from "places.js";
 
 export default {
-    name : 'CreationRestaurant',
-        data: () => ({
-            nom: "",
-            cuisine: "",
-            adresse: "",
-            zipcode: "",
-            ville: "",
-            country: "",
-            lat: "",
-            lng: "",
+  name: "CreationRestaurant",
+  data: () => ({
+    nom: "",
+    cuisine: "",
+    adresse: "",
+    zipcode: "",
+    ville: "",
+    country: "",
+    lat: "",
+    lng: "",
 
-            
-            // Snackbar stuff
-            ajoutRestaurantSnackbar: false,
-            position: "center",
-            duration: 4000,
+    // Snackbar stuff
+    ajoutRestaurantSnackbar: false,
+    position: "center",
+    duration: 4000,
 
-            //Algolia Places
-            instance: null 
-    }),
-    methods: {
+    //Algolia Places
+    instance: null,
+  }),
+  methods: {
     async ajouterRestaurant(event) {
-        // eviter le comportement par defaut
-        event.preventDefault();
+      // eviter le comportement par defaut
+      event.preventDefault();
 
-        let form = event.target;
-        let donneesFormulaire = new FormData(form);
-        console.log(form);
-        let url = "http://localhost:8080/api/restaurants";
+      let form = event.target;
+      let donneesFormulaire = new FormData(form);
+      console.log(form);
+      let url = "http://localhost:8080/api/restaurants";
 
-        fetch(url, {
+      fetch(url, {
         method: "POST",
         body: donneesFormulaire,
-        })
+      })
         .then((responseJSON) => {
-            responseJSON.json().then((res) => {
+          responseJSON.json().then((res) => {
             // Maintenant res est un vrai objet JavaScript
             console.log("Restaurant ajouté, " + res.msg);
             this.ajoutRestaurantSnackbar = true;
-            });
+          });
         })
         .catch((err) => {
-            console.log(err);
+          console.log(err);
         });
 
-        this.nom = "";
-        this.cuisine = "";
-        }
+      this.nom = "";
+      this.cuisine = "";
+      this.adresse = "";
+      this.zipcode = "";
+      this.ville = "";
+      this.country = "";
+      this.lat = "";
+      this.lng = "";
     },
-    mounted() {
-        // make sure Vue does not know about the input
-        // this way it can properly unmount
-        this.input = document.createElement('input');
-        this.$el.appendChild(this.input);
+  },
+  mounted() {
+    // make sure Vue does not know about the input
+    // this way it can properly unmount
+    this.input = document.createElement("input");
+    this.$el.appendChild(this.input);
 
-        this.instance = places({
-            container: this.input
-        });
+    this.instance = places({
+      container: this.input,
+    });
 
-        this.instance.on('change', e => {
-            this.$emit('change', e);
-            console.log(e);
-            //console.log(e.suggestion.name);
-            this.adresse = e.suggestion.name;
-            //console.log(e.suggestion.postcode);
-            this.zipcode = e.suggestion.postcode;
-            //console.log(e.suggestion.city);
-            this.ville = e.suggestion.city;
-            //console.log(e.suggestion.country);
-            this.country = e.suggestion.country;
-            //console.log(e.suggestion.latlng.lat);
-            this.lat = e.suggestion.latlng.lat;
-            //console.log(e.suggestion.latlng.lng);
-            this.lng = e.suggestion.latlng.lng;
-        });
-    },
-    beforeDestroy() {
-        // if you had any "this.instance.on", also call "off" here
-        this.instance.destroy();
-    },
-}
+    this.instance.on("change", (e) => {
+      this.$emit("change", e);
+      //console.log(e);
+      this.adresse = e.suggestion.name;
+      this.zipcode = e.suggestion.postcode;
+      this.ville = e.suggestion.city;
+      this.country = e.suggestion.country;
+      this.lat = e.suggestion.latlng.lat;
+      this.lng = e.suggestion.latlng.lng;
+    });
+  },
+  beforeDestroy() {
+    // On réinitialise/détruit l'instance initialisée
+    this.instance.off();
+    this.instance.destroy();
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

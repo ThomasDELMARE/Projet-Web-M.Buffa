@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
+### First run
+```
+npm install --save places.js
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
