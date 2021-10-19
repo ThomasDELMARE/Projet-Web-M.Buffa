@@ -136,9 +136,10 @@
 import _ from "lodash";
 
 export default {
-  name: "HelloWorld",
+  name: "Restaurants",
   data: () => ({
     restaurants: [],
+    restauranto : null,
     nom: "",
     cuisine: "",
     nbRestaurantsTotal: 0,
@@ -253,6 +254,8 @@ export default {
         .catch(function (err) {
           console.log(err);
         });
+
+        this.restauranto = this.restaurants[0]
     },
     pageSuivante() {
       if (this.page === this.nbPagesTotal) {
@@ -278,6 +281,7 @@ export default {
   mounted() {
     // console.log("AVANT RENDU HTML");
     this.getRestaurantsFromServer();
+    console.log(this.restauranto)
   },
 };
 </script>
