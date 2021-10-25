@@ -3,10 +3,7 @@
     <h1>Application de gestion de restaurants :</h1>
 
     <br />
-
-    <!-- <h1>Nombre de restaurants : {{ nbRestaurantsTotal }}</h1> -->
-    <!-- <p>Nb pages totales : {{ nbPagesTotal }}</p> -->
-
+<!-- 
     <form v-on:submit="ajouterRestaurant">
       <label>
         Nom : <input name="nom" type="text" required v-model="nom" />
@@ -17,9 +14,7 @@
       </label>
 
       <button>Ajouter</button>
-    </form>
-
-    <br />
+    </form> -->
 
     <form>
       <label> Rechercher un restaurant : </label>
@@ -40,7 +35,7 @@
     </button>
     <button v-if="page === 0" disabled>Précédent</button>
 
-    <label> Page {{ page }} </label>
+    <label> Page {{ page + 1 }} </label>
 
     <button
       v-if="page >= 0 && page != nbPagesTotal && restaurants != 0"
@@ -93,11 +88,17 @@
         >
 
         <md-table-cell md-label="Actions">
-          <!-- <router-link :to="'/details-restaurant/' + item._id"
-            >[Détails Restaurant]</router-link
-          > -->
-          <md-button class="md-primary" :to="'/details-restaurant/' + item._id">DETAILS</md-button>
-          <md-button class="md-accent">SUPPRIMER</md-button>
+          <md-button class="md-primary" :to="'/details-restaurant/' + item._id"
+            >DETAILS</md-button
+          >
+          <md-button
+            class="md-accent"
+            @click="
+              confirmPopUp = true;
+              setItem(item);
+            "
+            >SUPPRIMER</md-button
+          >
         </md-table-cell>
       </md-table-row>
     </md-table>
@@ -131,6 +132,17 @@
     >
       <span>Salut petit scarabé, que la force soit avec toi jeune padawan</span>
     </md-snackbar>
+
+    <!-- Dialogue de confirmation de supression d'un hôtel -->
+    <md-dialog-confirm
+      :md-active.sync="confirmPopUp"
+      md-title="Etes-vous sûr de vouloir supprimer cet hôtel ?"
+      md-content="Si vous supprimez un hôtel, il ne sera pas possible d'en récupérer ces données."
+      md-confirm-text="Confirmer"
+      md-cancel-text="Annuler"
+      @md-cancel="onCancel"
+      @md-confirm="onConfirm"
+    />
   </div>
 </template>
 
@@ -141,7 +153,6 @@ export default {
   name: "Restaurants",
   data: () => ({
     restaurants: [],
-    restauranto: null,
     nom: "",
     cuisine: "",
     nbRestaurantsTotal: 0,
@@ -155,8 +166,12 @@ export default {
     showSnackbar: false,
     showBuffaSnackbar: false,
     showObiWanSnackbar: false,
+    showVerification: false,
     position: "center",
     duration: 4000,
+
+    // Deletion button stuff
+    confirmPopUp: false,
   }),
   methods: {
     supprimerRestaurant(restaurant) {
@@ -178,33 +193,33 @@ export default {
           console.log(err);
         });
     },
-    ajouterRestaurant(event) {
-      // eviter le comportement par defaut
-      event.preventDefault();
+    // ajouterRestaurant(event) {
+    //   // eviter le comportement par defaut
+    //   event.preventDefault();
 
-      let form = event.target;
-      let donneesFormulaire = new FormData(form);
-      let url = "http://localhost:8080/api/restaurants";
+    //   let form = event.target;
+    //   let donneesFormulaire = new FormData(form);
+    //   let url = "http://localhost:8080/api/restaurants";
 
-      fetch(url, {
-        method: "POST",
-        body: donneesFormulaire,
-      })
-        .then((responseJSON) => {
-          responseJSON.json().then((res) => {
-            // Maintenant res est un vrai objet JavaScript
-            console.log("Restaurant ajouté, " + res.msg);
-            // On rafraichit la vue
-            this.getRestaurantsFromServer();
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    //   fetch(url, {
+    //     method: "POST",
+    //     body: donneesFormulaire,
+    //   })
+    //     .then((responseJSON) => {
+    //       responseJSON.json().then((res) => {
+    //         // Maintenant res est un vrai objet JavaScript
+    //         console.log("Restaurant ajouté, " + res.msg);
+    //         // On rafraichit la vue
+    //         this.getRestaurantsFromServer();
+    //       });
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
 
-      this.nom = "";
-      this.cuisine = "";
-    },
+    //   this.nom = "";
+    //   this.cuisine = "";
+    // },
     getColor(index) {
       return index % 2 ? "lightBlue" : "pink";
     },
@@ -256,8 +271,6 @@ export default {
         .catch(function (err) {
           console.log(err);
         });
-
-      this.restauranto = this.restaurants[0];
     },
     pageSuivante() {
       if (this.page === this.nbPagesTotal) {
@@ -279,18 +292,19 @@ export default {
       this.page = 0;
       this.getRestaurantsFromServer();
     }, 1000),
-
-    testClick() {
-      console.log("Test click");
+    onConfirm() {
+      this.supprimerRestaurant(this.item);
     },
-    doThis() {
-      console.log("wows");
+    onCancel() {
+      console.log("Disagreed");
+    },
+    setItem(item) {
+      this.item = item;
     },
   },
   mounted() {
     // console.log("AVANT RENDU HTML");
     this.getRestaurantsFromServer();
-    // console.log(this.restauranto)
   },
 };
 </script>

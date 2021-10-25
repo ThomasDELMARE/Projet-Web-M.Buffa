@@ -19,7 +19,6 @@ Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
 
-
 Vue.config.productionTip = false
 
 // On définit des routes
