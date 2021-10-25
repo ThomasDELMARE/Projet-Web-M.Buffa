@@ -30,7 +30,7 @@
 
       <md-field>
         <label>Entrer une ville</label>
-        <md-input name="ville" type="text" required v-model="ville"></md-input>
+        <md-input name="city" type="text" required v-model="city"></md-input>
       </md-field>
 
       <md-field>
@@ -80,7 +80,7 @@ export default {
     cuisine: "",
     adresse: "",
     zipcode: "",
-    ville: "",
+    city: "",
     country: "",
     lat: "",
     lng: "",
@@ -100,6 +100,8 @@ export default {
 
       let form = event.target;
       let donneesFormulaire = new FormData(form);
+      donneesFormulaire.append("lat", this.lat);
+      donneesFormulaire.append("lng", this.lng);
       console.log(form);
       let url = "http://localhost:8080/api/restaurants";
 
@@ -122,7 +124,7 @@ export default {
       this.cuisine = "";
       this.adresse = "";
       this.zipcode = "";
-      this.ville = "";
+      this.city = "";
       this.country = "";
       this.lat = "";
       this.lng = "";
@@ -143,7 +145,7 @@ export default {
       //console.log(e);
       this.adresse = e.suggestion.name;
       this.zipcode = e.suggestion.postcode;
-      this.ville = e.suggestion.city;
+      this.city = e.suggestion.city;
       this.country = e.suggestion.country;
       this.lat = e.suggestion.latlng.lat;
       this.lng = e.suggestion.latlng.lng;
