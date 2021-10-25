@@ -134,7 +134,14 @@ exports.createRestaurant = async (formData) => {
 	try {
 		let toInsert = {
 			name: formData.nom,
-			cuisine: formData.cuisine
+			cuisine: formData.cuisine,
+			borought: formData.city,
+			address: {
+				building: formData.building || null,
+				street: formData.adresse,
+				zipcode: formData.zipcode,
+				coord: [formData.lat || null , formData.lng || null]
+			}
 		};
 		let data = await db.collection("restaurants").insertOne(toInsert);
 		reponse = {
