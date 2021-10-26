@@ -1,0 +1,83 @@
+{
+    "listeProduits":[
+        {
+            "nom": "Spaghettis à la bolognaise",
+            "type": "plat",
+            "cuisine": "italienne"
+        },
+        {
+            "nom": "Gratin de pâtes",
+            "type": "plat",
+            "cuisine": "italienne"
+        },
+        {
+            
+            "nom": "Tarte aux pommes",
+            "type": "dessert",
+            "cuisine": "française"
+        },
+        {
+            "nom": "Endive jambon",
+            "type": "entree",
+            "cuisine": "française"
+        },
+        {
+            "nom" : "Tomates Mozza",
+            "type" : "entree",
+            "cuisine" : "italienne"
+        },
+        {
+            "nom" : "Soupe aux poireaux",
+            "type": "entree",
+            "cuisine": "française"
+        },
+        {
+            "nom" : "Plateau de charcuteries",
+            "type": "entree",
+            "cuisine": "italienne"
+        },        
+        {
+            "nom": "Tarte aux pommes",
+            "type": "dessert",
+            "cuisine": "française"
+
+        },
+        {
+            "nom": "Tiramisu",
+            "type": "dessert",
+            "cuisine": "italienne"
+        },
+
+        {
+            "nom" : "Ile flottante",
+            "type": "dessert",
+            "cuisine": "française"
+        },
+        {
+            "nom": "Mousse au chocolat",
+            "type": "dessert",
+            "cuisine": "française"
+        },
+        
+        {
+            "nom" : "Tarte aux pommes",
+            "type": "dessert",
+            "cuisine": "française"
+
+        },
+        {
+            "nom": "Tiramisu",
+            "type": "dessert",
+            "cuisine": "italienne"
+        },
+        {
+            "nom" : "Hamburger",
+            "type" : "plat",
+            "cuisine": "américaine"
+        },
+        {
+            "nom" : "Pulled Pork",
+            "type":"plat"
+        }
+    ]
+}

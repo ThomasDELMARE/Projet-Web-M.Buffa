@@ -3,7 +3,8 @@
     <h1>Application de gestion de restaurants :</h1>
 
     <br />
-<!-- 
+    
+    <!-- 
     <form v-on:submit="ajouterRestaurant">
       <label>
         Nom : <input name="nom" type="text" required v-model="nom" />
