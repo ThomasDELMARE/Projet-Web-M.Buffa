@@ -1,6 +1,7 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
     <h1>Détails du restaurant avec l'id {{ idRestaurant }}</h1>
+    <img style="width:100%" width="500" height="600" :src="img" alt="">
     <ul>
       <li>Nom : {{ this.nom }}</li>
       <li>Cuisine : {{ this.cuisine }}</li>
@@ -21,6 +22,9 @@
 <script>
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from "leaflet";
+
+const GoogleImages = require('google-images');
+const client = new GoogleImages('bdb3c367ae547443f', 'AIzaSyATXK5n152fW97tkTSZAIRYT1yIJ2CSk8g');
 
 export default {
   name: "DetailsRestaurant",
@@ -50,9 +54,9 @@ export default {
       long: 0,
       center: undefined,
       markerLatLng: undefined,
-      dataReady: false
+      dataReady: false,
       // center: [this.restaurant.address.coord[0], this.restaurant.address.coord[1]],
-      
+      img: null
     };
   },
   methods: {
@@ -87,6 +91,14 @@ export default {
         .then((r) => {
           this.affecterValeursRestaurant(r.restaurant);
         });
+    },
+    searchImage(){
+      window.setImmediate = window.setTimeout;
+      client.search('restaurant '+ this.nom)
+      .then(images => {
+        console.log(images);
+        this.img = images[0].url;
+      });
     }
   },
   async mounted() {
@@ -99,6 +111,7 @@ export default {
       iconUrl: require("leaflet/dist/images/marker-icon.png"),
       shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
     });
+    this.searchImage();
     this.dataReady = true ;
   },
 };
