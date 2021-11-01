@@ -39,7 +39,7 @@ const router = new VueRouter({
         component: CreationRestaurant,
       },
       {
-        path: "/carte-restaurant",
+        path: "/details-restaurant/:id/carte",
         component: CarteRestaurant,
       }
     ],

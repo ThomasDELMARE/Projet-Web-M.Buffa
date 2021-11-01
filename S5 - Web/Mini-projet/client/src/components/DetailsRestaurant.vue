@@ -9,17 +9,15 @@
       <li>Coordonnées : {{ this.restaurant.address.coord[0] }}</li>
     </ul>
 
+    <a id="restaurantName" v-bind:href="urlCarte">CARTE RESTAURANT</a>
+
     <l-map style="height: 300px"
     :zoom="zoom" 
     :center="center">
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker :lat-lng="markerLatLng"></l-marker>
     </l-map>
-      <button
-        type="text"
-        id="restaurantName"
-        @click="putImage()"
-    >TEST</button>
+
   </div>
 
 </template>
@@ -60,7 +58,8 @@ export default {
       center: undefined,
       markerLatLng: undefined,
       dataReady: false,
-      urlImg: null
+      urlImg: null,
+      urlCarte: null
     };
   },
   methods: {
@@ -79,6 +78,7 @@ export default {
 
     },
     async fetchRestaurant(id) {
+      this.urlCarte = "/details-restaurant/"+id+"/carte";
       let url = "http://localhost:8080/api/restaurants/" + id;
       await fetch(url)
         .then((reponse) => {

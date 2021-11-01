@@ -1,27 +1,76 @@
 <template>
-  <div>
-
+  <div id="CarteRestaurant"  v-if="dataReady">
+    <p> Menu : <br>
+      {{this.menu.entree.nom}} <br>
+      {{this.menu.plat.nom}}<br>
+      {{this.menu.dessert.nom}}
+    </p>
   </div>
 </template>
 
 <script>
 
-import Produit from "./Produit.js"
-// import Menu from "Menu.js"
+//import Produit from "./Produit.js"
+//import Menu from "Menu.js"
 // import produitsData from "../../assets/json/produits.json"
+import data from '../../assets/json/produits.json';
 
 export default {
+  
   name: "CarteRestaurant",
+  computed: {
+    idRestaurant() {
+      return this.$route.params.id;
+    }
+  },
   data: () => ({
       produits: null,
-      listeProduits: null,
-      listeEntrees: null,
-      listePlats: null,
-      listeDesserts: null,
-      tempList: null
+      listeEntrees: [],
+      listePlats: [],
+      listeDesserts: [],
+      menu: null,
+      dataReady: false
   }),
   methods: {
-    creerListeProduits(){
+    computeAllProducts(){
+      this.produits.forEach(p =>{
+        if(p.type === "plat"){
+          this.listePlats.push(p);
+        }
+        else if (p.type === "dessert"){
+          this.listeDesserts.push(p);
+        }
+        else if (p.type === "entree"){
+          this.listeEntrees.push(p);
+        }    
+      });
+      console.log(this.listeEntrees);
+      console.log(this.listePlats);
+      console.log(this.listeDesserts);
+    },
+    createMenu(){
+      let idEntree = Math.round(Math.random()*this.listeEntrees.length);
+      let idPlat =  Math.round(Math.random()*this.listePlats.length);
+      let idDessert =  Math.round(Math.random()*this.listeDesserts.length);
+
+      this.entree = this.listeEntrees[idEntree];
+      this.plat = this.listePlats[idPlat];
+      this.dessert = this.listeDesserts[idDessert];
+
+      this.menu = {
+        entree : this.entree,
+        plat: this.plat,
+        dessert: this.dessert
+      }
+
+      console.log(this.menu);
+    }
+    /*
+          {{this.menu.entree.nom}} <br>
+      {{this.menu.plat.nom}} <br>
+      {{this.menu.dessert.nom}} <br>
+
+      creerListeProduits(){
       this.listeProduits = []
 
       for(let i = 0; i < this.produits.length; i++){
@@ -85,10 +134,15 @@ export default {
         // // console.log(this.listeDesserts)
         
     }
+    */
   },
   mounted() {
-      this.produits = JSON.parse('../../assets/json/produits.json')
-      console.log(this.produits)
+    console.log(data)
+    this.produits = data.listeProduits;
+    this.computeAllProducts();
+    this.createMenu();
+    this.dataReady = true;
+      //console.log(this.produits)
     // this.creerListeProduits()
     // this.creerMenu(true)
   },
