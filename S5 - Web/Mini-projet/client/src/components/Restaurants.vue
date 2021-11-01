@@ -264,7 +264,7 @@ export default {
     },
     setItem(item) {
       this.item = item;
-    },
+    }
   },
   mounted() {
     // AVANT RENDU HTML

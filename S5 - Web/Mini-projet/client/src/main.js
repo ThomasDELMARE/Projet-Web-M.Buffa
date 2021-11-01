@@ -11,6 +11,7 @@ import 'leaflet/dist/leaflet.css';
 import Restaurants from './components/Restaurants.vue'
 import DetailsRestaurant from './components/DetailsRestaurant.vue'
 import CreationRestaurant from './components/CreationRestaurant.vue'
+import CarteRestaurant from './components/Menu/CarteRestaurant.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueMaterial);
@@ -36,6 +37,10 @@ const router = new VueRouter({
       {
         path: "/creation-restaurant",
         component: CreationRestaurant,
+      },
+      {
+        path: "/carte-restaurant",
+        component: CarteRestaurant,
       }
     ],
     mode:'history'
