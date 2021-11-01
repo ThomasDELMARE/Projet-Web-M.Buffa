@@ -3,19 +3,6 @@
     <h1>Application de gestion de restaurants :</h1>
 
     <br />
-    
-    <!-- 
-    <form v-on:submit="ajouterRestaurant">
-      <label>
-        Nom : <input name="nom" type="text" required v-model="nom" />
-      </label>
-      <label>
-        Cuisine :
-        <input name="cuisine" type="text" required v-model="cuisine" />
-      </label>
-
-      <button>Ajouter</button>
-    </form> -->
 
     <form>
       <label> Rechercher un restaurant : </label>
@@ -36,15 +23,17 @@
     </button>
     <button v-if="page === 0" disabled>Précédent</button>
 
+    <!-- J'ai mis un + 1 afin qu'on affiche "page 1" à la place de "page 0" au début -->
     <label> Page {{ page + 1 }} </label>
 
-    <button
-      v-if="page >= 0 && page != nbPagesTotal && restaurants != 0"
-      @click="pageSuivante()"
-    >
+    <button v-if="page + 1 == nbPagesTotal || restaurants == 0" disabled>
       Suivant
     </button>
-    <button v-if="page === nbPagesTotal || restaurants == 0" disabled>
+
+    <button
+      v-if="page >= 0 && page + 1 != nbPagesTotal && restaurants != 0"
+      @click="pageSuivante()"
+    >
       Suivant
     </button>
 
@@ -193,34 +182,8 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    },
-    // ajouterRestaurant(event) {
-    //   // eviter le comportement par defaut
-    //   event.preventDefault();
-
-    //   let form = event.target;
-    //   let donneesFormulaire = new FormData(form);
-    //   let url = "http://localhost:8080/api/restaurants";
-
-    //   fetch(url, {
-    //     method: "POST",
-    //     body: donneesFormulaire,
-    //   })
-    //     .then((responseJSON) => {
-    //       responseJSON.json().then((res) => {
-    //         // Maintenant res est un vrai objet JavaScript
-    //         console.log("Restaurant ajouté, " + res.msg);
-    //         // On rafraichit la vue
-    //         this.getRestaurantsFromServer();
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-
-    //   this.nom = "";
-    //   this.cuisine = "";
-    // },
+    }, 
+    // TODO : On le reintegre ?
     getColor(index) {
       return index % 2 ? "lightBlue" : "pink";
     },
@@ -274,7 +237,7 @@ export default {
         });
     },
     pageSuivante() {
-      if (this.page === this.nbPagesTotal) {
+      if (this.page + 1 === this.nbPagesTotal) {
         return;
       }
       this.page++;
@@ -304,7 +267,7 @@ export default {
     },
   },
   mounted() {
-    // console.log("AVANT RENDU HTML");
+    // AVANT RENDU HTML
     this.getRestaurantsFromServer();
   },
 };

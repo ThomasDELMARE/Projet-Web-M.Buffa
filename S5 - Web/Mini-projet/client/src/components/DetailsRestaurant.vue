@@ -1,12 +1,12 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
     <h1>Détails du restaurant avec l'id {{ idRestaurant }}</h1>
-    <img style="width:100%" width="500" height="600" :src="img" alt="">
+    <img  width="500" height="600" :src="img">
     <ul>
       <li>Nom : {{ this.nom }}</li>
       <li>Cuisine : {{ this.cuisine }}</li>
       <li>Ville : {{ this.ville }}</li>
-      <!-- <li>Coordonnées : {{ this.restaurant.address.coord[0] }}</li> -->
+      <li>Coordonnées : {{ this.restaurant.address.coord[0] }}</li>
     </ul>
 
     <l-map style="height: 300px"
@@ -55,7 +55,6 @@ export default {
       center: undefined,
       markerLatLng: undefined,
       dataReady: false,
-      // center: [this.restaurant.address.coord[0], this.restaurant.address.coord[1]],
       img: null
     };
   },
@@ -67,22 +66,13 @@ export default {
       this.ville = r.borough || "Donnée indisponible.";
       this.lat = r.address.coord[0];
       this.long = r.address.coord[1];
-
-      // this.currentCenter = latLng(r.address.coord[0], r.address.coord[1]),
-      // this.currentMarkerLatLng = latLng(r.address.coord[0], r.address.coord[1])
-      // SOLUTION EST LA, FAUT TRAVAILLER DESSUS MTNT
-      // this.mymap.panTo([r.address.coord[0], r.address.coord[1]]);
-
-
     },
     affecterValeursLeaflet(){
       this.center = [this.lat, this.long];
       this.markerLatLng = [this.lat, this.long];
-      console.log(this.center);
 
     },
     async fetchRestaurant(id) {
-      // console.log("Fetch de l'id en cours...");
       let url = "http://localhost:8080/api/restaurants/" + id;
       await fetch(url)
         .then((reponse) => {
@@ -96,8 +86,7 @@ export default {
       window.setImmediate = window.setTimeout;
       client.search('restaurant '+ this.nom)
       .then(images => {
-        console.log(images);
-        this.img = images[0].url;
+        this.img = images[1].url;
       });
     }
   },
