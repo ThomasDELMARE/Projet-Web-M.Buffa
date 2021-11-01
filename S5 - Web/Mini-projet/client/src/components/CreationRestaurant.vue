@@ -102,7 +102,7 @@ export default {
       let donneesFormulaire = new FormData(form);
       donneesFormulaire.append("lat", this.lat);
       donneesFormulaire.append("lng", this.lng);
-      console.log(form);
+      console.log(donneesFormulaire);
       let url = "http://localhost:8080/api/restaurants";
 
       fetch(url, {

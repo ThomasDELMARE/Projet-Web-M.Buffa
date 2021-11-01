@@ -169,9 +169,12 @@ exports.updateRestaurant = async (id, formData) => {
 	try {
 		let myquery = { "_id": ObjectId(id) };
 		let newvalues = {
+
+			//CHECK DES CHAMPS A EDIT
+			//+ AFFECTATION EN FCT
+
 			$set: {
-				name: formData.name,
-				cuisine: formData.cuisine
+				url: formData.urlImg
 			}
 		};
 		let result = await db.collection("restaurants").updateOne(myquery, newvalues);
