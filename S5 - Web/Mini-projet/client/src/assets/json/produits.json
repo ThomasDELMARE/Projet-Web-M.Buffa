@@ -3,81 +3,187 @@
         {
             "nom": "Spaghettis à la bolognaise",
             "type": "plat",
-            "cuisine": "italienne"
+            "cuisine": "italienne",
+            "gastronomique" : false
         },
         {
-            "nom": "Gratin de pâtes",
+            "nom": "Noisettes de chevreuil sauce grand veneur",
             "type": "plat",
-            "cuisine": "italienne"
+            "cuisine": "française",
+            "gastronomique" : true
         },
         {
             
-            "nom": "Tarte aux pommes",
+            "nom": "Clafoutis aux cerises",
             "type": "dessert",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : true
         },
         {
             "nom": "Endive jambon",
             "type": "entree",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : false
         },
         {
             "nom" : "Tomates Mozza",
             "type" : "entree",
-            "cuisine" : "italienne"
+            "cuisine" : "italienne",
+            "gastronomique" : false
         },
         {
-            "nom" : "Soupe aux poireaux",
+            "nom" : "Tartare de thon",
             "type": "entree",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : true
         },
         {
             "nom" : "Plateau de charcuteries",
             "type": "entree",
-            "cuisine": "italienne"
+            "cuisine": "italienne",
+            "gastronomique" : false
         },        
         {
-            "nom": "Tarte aux pommes",
+            "nom": "Poires pochées",
             "type": "dessert",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : true
 
         },
         {
             "nom": "Tiramisu",
             "type": "dessert",
-            "cuisine": "italienne"
+            "cuisine": "italienne",
+            "gastronomique" : false
         },
 
         {
             "nom" : "Ile flottante",
             "type": "dessert",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : true
         },
         {
             "nom": "Mousse au chocolat",
             "type": "dessert",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : true
         },
         
         {
             "nom" : "Tarte aux pommes",
             "type": "dessert",
-            "cuisine": "française"
+            "cuisine": "française",
+            "gastronomique" : false
 
         },
         {
-            "nom": "Tiramisu",
+            "nom": "Meringue",
             "type": "dessert",
-            "cuisine": "italienne"
+            "cuisine": "italienne",
+            "gastronomique" : false
         },
         {
             "nom" : "Hamburger",
             "type" : "plat",
-            "cuisine": "américaine"
+            "cuisine": "américaine",
+            "gastronomique" : false
         },
         {
             "nom" : "Pulled Pork",
-            "type":"plat"
+            "type":"plat",
+            "cuisine" : "américaine",
+            "gastronomique" : true
+        },        
+        {
+            "nom" : "Pasteis de Nata",
+            "type":"dessert",
+            "cuisine" : "portugaise",
+            "gastronomique" : false
+        },        
+        {
+            "nom" : "Baba au rhum",
+            "type":"dessert",
+            "cuisine" : "française",
+            "gastronomique" : true
+        },        
+        {
+            "nom" : "Baklava",
+            "type":"dessert",
+            "cuisine" : "turque",
+            "gastronomique" : false
+        },
+        {
+            "nom": "Magret de canard",
+            "type": "plat",
+            "cuisine": "français",
+            "gastronomique" : true
+        },
+        {
+            "nom": "Pad thai",
+            "type": "plat",
+            "cuisine": "thailandais",
+            "gastronomique" : false
+        },
+        {
+            "nom": "Majadito",
+            "type": "plat",
+            "cuisine": "bolivien",
+            "gastronomique" : false
+        },
+        {
+            "nom": "Chili con carne",
+            "type": "plat",
+            "cuisine": "mexicain",
+            "gastronomique" : true
+        },
+        {
+            "nom": "Couscous",
+            "type": "plat",
+            "cuisine": "maghreb",
+            "gastronomique" : false
+        },
+        {   
+            "nom": "Raviole de homard",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : true
+        },
+        {   
+            "nom": "Oeufs au plat",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : false
+        },
+        {   
+            "nom": "Soupe",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : false
+        },
+        {
+            "nom": "Allumette au foie gras",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : true
+        },
+        {
+            "nom": "Terrine de foie gras",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : true
+        },
+        {
+            "nom": "Terrine de tomates aux fromages frais",
+            "type": "entree",
+            "cuisine": "française",
+            "gastronomique" : true
+        },
+        {
+            "nom": "Saint-Jacques rôtie",
+            "type": "plat",
+            "cuisine": "française",
+            "gastronomique" : true
         }
     ]
 }
