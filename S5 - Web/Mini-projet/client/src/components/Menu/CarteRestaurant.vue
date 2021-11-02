@@ -3,26 +3,26 @@
     <p>
       <B><U> Menu du midi : </U></B><br />
       <br />
-      {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} €<br />
-      {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} €<br />
-      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <img width="400" height="500" v-bind:src="this.menu.dessert.lien">
+      {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <img width="100" height="120" :src="this.menu.entree.lien"> <br />
+      {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <img width="100" height="120" :src="this.menu.plat.lien"> <br />
+      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <img width="100" height="120" :src="this.menu.dessert.lien">
     </p>
     <p>
       <B><U> Menu gastronomique : </U></B><br />
       <br />
       {{ this.menuGastronomique.entree.nom }} :
-      {{ this.menuGastronomique.entree.prix }} €<br />
+      {{ this.menuGastronomique.entree.prix }} € <img width="100" height="120" :src="this.menuGastronomique.entree.lien"><br />
       {{ this.menuGastronomique.plat.nom }} :
-      {{ this.menuGastronomique.plat.prix }} €<br />
+      {{ this.menuGastronomique.plat.prix }} € <img width="100" height="120" :src="this.menuGastronomique.plat.lien"><br /><br />
       {{ this.menuGastronomique.dessert.nom }} :
-      {{ this.menuGastronomique.dessert.prix }} € <br />
+      {{ this.menuGastronomique.dessert.prix }} € <img width="100" height="120" :src="this.menuGastronomique.dessert.lien"><br /><br />
     </p> <br />
 
   </div>
 </template>
 
 <script>
-import data from "../../assets/json/produits.json";
+import data from "/src/assets/json/produits.json";
 
 export default {
   name: "CarteRestaurant",
@@ -41,6 +41,7 @@ export default {
     listeDesserts: [],
     listeDessertsGastronomique: [],
 
+    test:"/ baba_au_rhum.jpg",
     entree: null,
     plat: null,
     dessert: null,
@@ -82,17 +83,17 @@ export default {
           Math.random() * this.listeDessertsGastronomique.length
         );
 
-        console.log(idEntree);
-        console.log(idPlat);
-        console.log(idDessert);
+        //console.log(idEntree);
+        //console.log(idPlat);
+        //console.log(idDessert);
 
         this.entreeGastronomique = this.listeEntreesGastronomique[idEntree];
         this.platGastronomique = this.listePlatsGastronomique[idPlat];
         this.dessertGastronomique = this.listeDessertsGastronomique[idDessert];
 
-        console.log("Plat gastro : ", this.platGastronomique);
-        console.log("Entree gastro : ", this.entreeGastronomique);
-        console.log("Dessert gastro : ", this.dessertGastronomique);
+        //console.log("Plat gastro : ", this.platGastronomique);
+        //console.log("Entree gastro : ", this.entreeGastronomique);
+        //console.log("Dessert gastro : ", this.dessertGastronomique);
 
         this.menuGastronomique = {
           entree: this.entreeGastronomique,
@@ -100,7 +101,7 @@ export default {
           dessert: this.dessertGastronomique,
         };
 
-        console.log(this.menu);
+        //console.log(this.menu);
       } else {
         let idEntree = parseInt(Math.random() * this.listeEntrees.length);
         let idPlat = parseInt(Math.random() * this.listePlats.length);

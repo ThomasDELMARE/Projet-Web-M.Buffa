@@ -5,7 +5,7 @@
             "type": "plat",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"https://img.cuisineaz.com/660x660/2013/12/20/i71303-recette-pate-spaghettis-bolognaise-maison.jpg",
+            "lien":"/client/src/assets/photosProduits/dessert/baba_au_rhum.jpg",
             "prix": "12"
         },
         {
@@ -13,7 +13,7 @@
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"https://cac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcac.2F2018.2F09.2F25.2F9e828c42-2ab3-40f4-bc6e-a301d0049a7e.2Ejpeg/750x562/quality/80/crop-from/center/cr/wqkgUm91bGllci9UdXJpb3QgLyBTdWNyw6kgU2Fsw6kgLyBDdWlzaW5lIEFjdHVlbGxl/noisettes-de-chevreuil-sauce-grand-veneur.jpeg",
+           "lien":"@/assets/photosProduits/plat/noisettes_chevreuil_sauce_grand_veneur.jpeg",
             "prix": "46"
         },
         {
@@ -22,7 +22,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"https://cache.marieclaire.fr/data/photo/w1000_ci/55/clafoutis-aux-cerises-traditionnel.jpg",
+           "lien":"@/assets/photosProduits/dessert/clafoutis_cerises.jpg",
             "prix": "8"
         },
         {
@@ -30,7 +30,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-           "lien":"https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2F4da5b09b-5459-4894-a3cc-a8b684f9af76.2Ejpeg/750x562/quality/80/crop-from/center/cr/wqkgQmVydHJhbS9TdWNyw6kgU2Fsw6kgLyBGZW1tZSBBY3R1ZWxsZQ%3D%3D/endives-au-jambon-gratinees-au-gruyere.jpeg",
+           "lien":"@/assets/photosProduits/entree/endives_jambons.jpg",
             "prix": "10"
         },
         {
@@ -38,7 +38,7 @@
             "type" : "entree",
             "cuisine" : "italienne",
             "gastronomique" : false,
-           "lien":"https://img-3.journaldesfemmes.fr/7lpM6OiA6MTyOen5pF3x3HlTbfE=/750x500/smart/f5013f26a31545f7bb5e896c3423f8e3/recipe-jdf/10026610.jpg",
+           "lien":"@/assets/photosProduits/entree/tomates_mozza.jpg",
             "prix": "6"
         },
         {
@@ -46,7 +46,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://img.mesrecettesfaciles.fr/2020-02/tartare-de-thon-aux-avocats-1.jpg",
+           "lien":"@/assets/photosProduits/entree/tartare_thon.jpg",
             "prix": "14"
         },
         {
@@ -54,7 +54,7 @@
             "type": "entree",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"http://www.alaclochedor.com/blog/wp-content/uploads/2018/04/charcuterie.jpg",
+           "lien":"@/assets/photosProduits/entree/plateau_charcuterie.png",
             "prix": "9"
         },        
         {
@@ -62,7 +62,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"https://www.atelierdeschefs.com/media/recette-e22415-poire-pochee-au-coeur-caramel-espuma-de-poire-brioche-doree.jpg",
+           "lien":"@/assets/photosProduits/dessert/poires_pochees.jpg",
             "prix": "5"
 
         },
@@ -71,7 +71,7 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-           "lien":"https://img.cuisineaz.com/400x400/2021/04/19/i168450-tiramisu-au-cafe-min.webp",
+           "lien":"@/assets/photosProduits/dessert/tiramisu.png",
             "prix": "4"
         },
 
@@ -80,7 +80,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://www.regal.fr/sites/art-de-vivre/files/Import/ile-flottante-creme-anglaise-caramel_ss.jpg",
+           "lien":"@/assets/photosProduits/dessert/ile_flottante.jpg",
             "prix": "4"
         },
         {
@@ -88,7 +88,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://www.hervecuisine.com/wp-content/uploads/2013/02/recette-mousse-au-chocolat-1024x678.jpg.webp",
+           "lien":"@/assets/photosProduits/dessert/mousse_chocolat.jpg",
             "prix": "4"
         },
         
@@ -97,7 +97,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/24A13623-CD87-4B14-9DF6-761D92D384C2/Derivates/DB95004A-E069-4188-BEDA-1AE71F6C2AFB.jpg",
+           "lien":"@/assets/photosProduits/dessert/tarte_aux_pommes.jpg",
             "prix": "5"
 
         },
@@ -106,7 +106,7 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"https://assets.afcdn.com/recipe/20200408/109517_w1024h1024c1cx2775cy4208.webp",
+           "lien":"@/assets/photosProduits/dessert/meringue.jpg",
             "prix": "3"
         },
         {
@@ -114,7 +114,7 @@
             "type" : "plat",
             "cuisine": "américaine",
             "gastronomique" : false,
-            "lien":"https://cdn.radiofrance.fr/s3/cruiser-production/2019/02/3e27345f-9e1e-45bb-9e5f-906f0abb2870/1280x680_gettyimages-922684138.jpg",
+           "lien":"@/assets/photosProduits/plat/hamburger.jpg",
             "prix": "11"
         },
         {
@@ -122,7 +122,7 @@
             "type":"plat",
             "cuisine" : "américaine",
             "gastronomique" : true,
-            "lien":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/dc91cbc3-ebd0-47cf-b9d3-a56c3da9d12a/Derivates/4c114882-8f59-4fe1-b1ef-873259088a18.jpg",
+           "lien":"@/assets/photosProduits/plat/pulled_pork.jpg",
             "prix": "13"
         },        
         {
@@ -130,7 +130,7 @@
             "type":"dessert",
             "cuisine" : "portugaise",
             "gastronomique" : false,
-           "lien":"https://www.livingtours.com/public/blog/posts/20200123161347-reQkxvU6.jpg",
+           "lien":"@/assets/photosProduits/dessert/pasteis_de_nata.jpg",
             "prix": "2"
         },        
         {
@@ -138,7 +138,7 @@
             "type":"dessert",
             "cuisine" : "française",
             "gastronomique" : true,
-            "lien":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/BabaRum.jpg/1200px-BabaRum.jpg",
+           "lien":"@/assets/photosProduits/dessert/baba_au_rhum.jpg",
             "prix": "5"
         },        
         {
@@ -146,7 +146,7 @@
             "type":"dessert",
             "cuisine" : "turque",
             "gastronomique" : false,
-            "lien":"https://www.grandbazaarist.com/wp-content/uploads/2019/06/Hafiz-Mustafa-Baklava-with-Pistachio-1.jpg",
+           "lien":"@/assets/photosProduits/dessert/baklava.jpg",
             "prix": "4"
         },
         {
@@ -154,7 +154,7 @@
             "type": "plat",
             "cuisine": "français",
             "gastronomique" : true,
-            "lien":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/1DCC54E8-5DB4-46AE-9E38-352C545ECBE8/Derivates/56538f7e-edb9-40f3-86a8-18defb24ad8a.jpg",
+           "lien":"@/assets/photosProduits/plat/magret_de_canard.jpeg",
             "prix": "24"
         },
         {
@@ -162,7 +162,7 @@
             "type": "plat",
             "cuisine": "thailandais",
             "gastronomique" : false,
-            "lien":"https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F07.2F30.2Febdb11e7-9288-4110-aebd-33ab8454f166.2Ejpeg/850x478/quality/90/crop-from/center/pad-thai-vegetarien.jpeg",
+           "lien":"@/assets/photosProduits/plat/pad_thai.jpg",
             "prix": "10"
         },
         {
@@ -170,7 +170,7 @@
             "type": "plat",
             "cuisine": "bolivien",
             "gastronomique" : false,
-            "lien":"https://upload.wikimedia.org/wikipedia/commons/d/d6/Majadito.jpg",
+           "lien":"@/assets/photosProduits/plat/majadito.jpg",
             "prix": "8"
         },
         {
@@ -178,7 +178,7 @@
             "type": "plat",
             "cuisine": "mexicain",
             "gastronomique" : true,
-            "lien":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/C31E5540-45D4-4913-B967-AC64E7FD7CF4/Derivates/fba045ac-c208-4dea-a6ba-3b4a3203d7b4.jpg",
+           "lien":"@/assets/photosProduits/plat/chili_con_carne.jpeg",
             "prix": "16"
         },
         {
@@ -186,7 +186,7 @@
             "type": "plat",
             "cuisine": "maghreb",
             "gastronomique" : false,
-            "lien":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/D3FE131E-EB10-46E8-9E93-5E178323751D/Derivates/A0B1EE28-94D2-4922-B871-CFB63832A281.jpg",
+           "lien":"@/assets/photosProduits/plat/couscous.jpg",
             "prix": "18"
         },
         {   
@@ -194,7 +194,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"https://ds1.static.rtbf.be/article/image/1248x702/7/7/6/1fce917d58530505302338d48394593c-1513697374.jpg",
+           "lien":"@/assets/photosProduits/entree/raviole_homard.jpg",
             "prix": "37"
         },
         {   
@@ -202,7 +202,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"https://resize-elle.ladmedia.fr/rcrop/638,,forcex/img/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/comment-preparer-un-oeuf-au-plat/90562366-1-fre-FR/20-recettes-d-oeufs-au-plat-a-avoir-goute-au-moins-une-fois-dans-sa-vie.jpg",
+           "lien":"@/assets/photosProduits/entree/oeuf_au_plat.jpg",
             "prix": "95"
         },
         {   
@@ -210,7 +210,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"https://img.cuisineaz.com/680x357/2017/01/18/i115824-soupe-epicee-de-legumes-maison.jpeg",
+           "lien":"@/assets/photosProduits/entree/soupe.jpg",
             "prix": "7"
         },
         {
@@ -218,7 +218,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"https://cuisine-facile.com/images/recettes/entrees/autres/438-0.jpg",
+           "lien":"@/assets/photosProduits/entree/allumette_foie_gras.jpg",
             "prix": "19"
         },
         {
@@ -226,7 +226,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://i.f1g.fr/media/madame/1900x1900/sites/default/files/img/2009/06/1668653193jpg.jpg",
+           "lien":"@/assets/photosProduits/entree/terrine_foie_gras.jpg",
             "prix": "16"
         },
         {
@@ -234,7 +234,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://www.soignon.fr/uploads/Recettes/Recette-soignon-terrine-de-poivrons-et-ch%C3%A8vre-frais.jpg",
+           "lien":"@/assets/photosProduits/entree/terrine_tomates_fromages_frais.jpeg",
             "prix": "16"
         },
         {
@@ -242,7 +242,7 @@
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-           "lien":"https://www.atelierdeschefs.com/media/recette-e7447-noix-de-saint-jacques-roties-puree-de-panais-a-la-vanille-jus-d-agrumes-et-jus-de-carotte.jpg",
+           "lien":"@/assets/photosProduits/plat/saint_jacques_rotie.jpg",
             "prix": "29"
         }
     ]
