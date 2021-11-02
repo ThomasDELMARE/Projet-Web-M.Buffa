@@ -1,15 +1,16 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
-    <h1>Détails du restaurant avec l'id {{ idRestaurant }}</h1>
+    <h1>Détails du restaurant {{ this.nom }}</h1>
+
     <img  width="500" height="600" :src="urlImg">
+
+    <carte-restaurant></carte-restaurant>
+        
     <ul>
       <li>Nom : {{ this.nom }}</li>
       <li>Cuisine : {{ this.cuisine }}</li>
       <li>Ville : {{ this.ville }}</li>
-      <li>Coordonnées : {{ this.restaurant.address.coord[0] }}</li>
     </ul>
-
-    <a id="restaurantName" v-bind:href="urlCarte">CARTE RESTAURANT</a>
 
     <l-map style="height: 300px"
     :zoom="zoom" 
@@ -18,6 +19,7 @@
       <l-marker :lat-lng="markerLatLng"></l-marker>
     </l-map>
 
+
   </div>
 
 </template>
@@ -25,6 +27,7 @@
 <script>
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from "leaflet";
+import CarteRestaurant from './Menu/CarteRestaurant.vue'
 
 const GoogleImages = require('google-images');
 const client = new GoogleImages('bdb3c367ae547443f', 'AIzaSyATXK5n152fW97tkTSZAIRYT1yIJ2CSk8g');
@@ -35,6 +38,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
+    CarteRestaurant
   },
   props: {
     passTest: String
