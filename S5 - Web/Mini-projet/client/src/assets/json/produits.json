@@ -5,7 +5,7 @@
             "type": "plat",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/plat/spaghettis_bolognaise.jpg",
+            "lien":"@/assets/photosProduits/plat/spaghettis_bolognaise.jpg",
             "prix": "12"
         },
         {
@@ -13,7 +13,7 @@
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/plat/noisettes_chevreuil_sauce_grand_veneur.jpeg",
+           "lien":"@/assets/photosProduits/plat/noisettes_chevreuil_sauce_grand_veneur.jpeg",
             "prix": "46"
         },
         {
@@ -22,7 +22,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/dessert/clafoutis_cerises.jpg",
+           "lien":"@/assets/photosProduits/dessert/clafoutis_cerises.jpg",
             "prix": "8"
         },
         {
@@ -30,7 +30,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/entree/endives_jambons.jpg",
+           "lien":"@/assets/photosProduits/entree/endives_jambons.jpg",
             "prix": "10"
         },
         {
@@ -38,7 +38,7 @@
             "type" : "entree",
             "cuisine" : "italienne",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/entree/tomates_mozza.jpg",
+           "lien":"@/assets/photosProduits/entree/tomates_mozza.jpg",
             "prix": "6"
         },
         {
@@ -46,7 +46,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/entree/tartare_thon.jpg",
+           "lien":"@/assets/photosProduits/entree/tartare_thon.jpg",
             "prix": "14"
         },
         {
@@ -54,7 +54,7 @@
             "type": "entree",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/entree/plateau_charcuterie.png",
+           "lien":"@/assets/photosProduits/entree/plateau_charcuterie.png",
             "prix": "9"
         },        
         {
@@ -62,7 +62,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/dessert/poires_pochees.jpg",
+           "lien":"@/assets/photosProduits/dessert/poires_pochees.jpg",
             "prix": "5"
 
         },
@@ -71,7 +71,7 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/dessert/tiramisu.png",
+           "lien":"@/assets/photosProduits/dessert/tiramisu.png",
             "prix": "4"
         },
 
@@ -80,7 +80,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/dessert/ile_flottante.jpg",
+           "lien":"@/assets/photosProduits/dessert/ile_flottante.jpg",
             "prix": "4"
         },
         {
@@ -88,7 +88,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/dessert/mousse_chocolat.jpg",
+           "lien":"@/assets/photosProduits/dessert/mousse_chocolat.jpg",
             "prix": "4"
         },
         
@@ -97,7 +97,7 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/dessert/tarte_aux_pommes.jpg",
+           "lien":"@/assets/photosProduits/dessert/tarte_aux_pommes.jpg",
             "prix": "5"
 
         },
@@ -106,7 +106,7 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/dessert/meringue.jpg",
+           "lien":"@/assets/photosProduits/dessert/meringue.jpg",
             "prix": "3"
         },
         {
@@ -114,7 +114,7 @@
             "type" : "plat",
             "cuisine": "américaine",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/plat/hamburger.jpg",
+           "lien":"@/assets/photosProduits/plat/hamburger.jpg",
             "prix": "11"
         },
         {
@@ -122,7 +122,7 @@
             "type":"plat",
             "cuisine" : "américaine",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/plat/pulled_pork.jpg",
+           "lien":"@/assets/photosProduits/plat/pulled_pork.jpg",
             "prix": "13"
         },        
         {
@@ -130,7 +130,7 @@
             "type":"dessert",
             "cuisine" : "portugaise",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/dessert/pasteis_de_nata.jpg",
+           "lien":"@/assets/photosProduits/dessert/pasteis_de_nata.jpg",
             "prix": "2"
         },        
         {
@@ -138,7 +138,7 @@
             "type":"dessert",
             "cuisine" : "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/dessert/baba_au_rhum.jpg",
+           "lien":"@/assets/photosProduits/dessert/baba_au_rhum.jpg",
             "prix": "5"
         },        
         {
@@ -146,7 +146,7 @@
             "type":"dessert",
             "cuisine" : "turque",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/dessert/baklava.jpg",
+           "lien":"@/assets/photosProduits/dessert/baklava.jpg",
             "prix": "4"
         },
         {
@@ -154,7 +154,7 @@
             "type": "plat",
             "cuisine": "français",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/plat/magret_de_canard.jpeg",
+           "lien":"@/assets/photosProduits/plat/magret_de_canard.jpeg",
             "prix": "24"
         },
         {
@@ -162,7 +162,7 @@
             "type": "plat",
             "cuisine": "thailandais",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/plat/pad_thai.jpg",
+           "lien":"@/assets/photosProduits/plat/pad_thai.jpg",
             "prix": "10"
         },
         {
@@ -170,7 +170,7 @@
             "type": "plat",
             "cuisine": "bolivien",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/plat/majadito.jpg",
+           "lien":"@/assets/photosProduits/plat/majadito.jpg",
             "prix": "8"
         },
         {
@@ -178,7 +178,7 @@
             "type": "plat",
             "cuisine": "mexicain",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/plat/chili_con_carne.jpeg",
+           "lien":"@/assets/photosProduits/plat/chili_con_carne.jpeg",
             "prix": "16"
         },
         {
@@ -186,7 +186,7 @@
             "type": "plat",
             "cuisine": "maghreb",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/plat/couscous.jpg",
+           "lien":"@/assets/photosProduits/plat/couscous.jpg",
             "prix": "18"
         },
         {   
@@ -194,7 +194,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/entree/raviole_homard.jpg",
+           "lien":"@/assets/photosProduits/entree/raviole_homard.jpg",
             "prix": "37"
         },
         {   
@@ -202,7 +202,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/entree/oeuf_au_plat.jpg",
+           "lien":"@/assets/photosProduits/entree/oeuf_au_plat.jpg",
             "prix": "95"
         },
         {   
@@ -210,7 +210,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":"client/src/assets/photosProduits/entree/soupe.jpg",
+           "lien":"@/assets/photosProduits/entree/soupe.jpg",
             "prix": "7"
         },
         {
@@ -218,7 +218,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/entree/allumette_foie_gras.jpg",
+           "lien":"@/assets/photosProduits/entree/allumette_foie_gras.jpg",
             "prix": "19"
         },
         {
@@ -226,7 +226,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/entree/terrine_foie_gras.jpg",
+           "lien":"@/assets/photosProduits/entree/terrine_foie_gras.jpg",
             "prix": "16"
         },
         {
@@ -234,7 +234,7 @@
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/entree/terrine_tomates_fromages_frais.jpeg",
+           "lien":"@/assets/photosProduits/entree/terrine_tomates_fromages_frais.jpeg",
             "prix": "16"
         },
         {
@@ -242,7 +242,7 @@
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":"client/src/assets/photosProduits/plat/saint_jacques_rotie.jpg",
+           "lien":"@/assets/photosProduits/plat/saint_jacques_rotie.jpg",
             "prix": "29"
         }
     ]

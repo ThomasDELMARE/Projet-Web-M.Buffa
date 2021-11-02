@@ -1,17 +1,23 @@
 <template>
   <div id="CarteRestaurant" v-if="dataReady">
     <p>
-      <B><U> Menu du midi : </U></B><br /> <br />
-      {{ this.menu.entree.nom }} <br />
-      {{ this.menu.plat.nom }}<br />
-      {{ this.menu.dessert.nom }}
+      <B><U> Menu du midi : </U></B><br />
+      <br />
+      {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} €<br />
+      {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} €<br />
+      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <img width="400" height="500" v-bind:src="this.menu.dessert.lien">
     </p>
     <p>
-      <B><U> Menu gastronomique : </U></B><br /> <br />
-      {{ this.menuGastronomique.entree.nom }} <br />
-      {{ this.menuGastronomique.plat.nom }}<br />
-      {{ this.menuGastronomique.dessert.nom }}
-    </p>
+      <B><U> Menu gastronomique : </U></B><br />
+      <br />
+      {{ this.menuGastronomique.entree.nom }} :
+      {{ this.menuGastronomique.entree.prix }} €<br />
+      {{ this.menuGastronomique.plat.nom }} :
+      {{ this.menuGastronomique.plat.prix }} €<br />
+      {{ this.menuGastronomique.dessert.nom }} :
+      {{ this.menuGastronomique.dessert.prix }} € <br />
+    </p> <br />
+
   </div>
 </template>
 
@@ -34,6 +40,13 @@ export default {
     listePlatsGastronomique: [],
     listeDesserts: [],
     listeDessertsGastronomique: [],
+
+    entree: null,
+    plat: null,
+    dessert: null,
+    entreeGastronomique: null,
+    platGastronomique: null,
+    dessertGastronomique: null,
 
     menu: null,
     menuGastronomique: null,
@@ -59,15 +72,19 @@ export default {
     },
     createMenu(gastronomique) {
       if (gastronomique == true) {
-        let idEntree = Math.round(
+        let idEntree = parseInt(
           Math.random() * this.listeEntreesGastronomique.length
         );
-        let idPlat = Math.round(
+        let idPlat = parseInt(
           Math.random() * this.listePlatsGastronomique.length
         );
-        let idDessert = Math.round(
+        let idDessert = parseInt(
           Math.random() * this.listeDessertsGastronomique.length
         );
+
+        console.log(idEntree);
+        console.log(idPlat);
+        console.log(idDessert);
 
         this.entreeGastronomique = this.listeEntreesGastronomique[idEntree];
         this.platGastronomique = this.listePlatsGastronomique[idPlat];
@@ -85,9 +102,9 @@ export default {
 
         console.log(this.menu);
       } else {
-        let idEntree = Math.round(Math.random() * this.listeEntrees.length);
-        let idPlat = Math.round(Math.random() * this.listePlats.length);
-        let idDessert = Math.round(Math.random() * this.listeDesserts.length);
+        let idEntree = parseInt(Math.random() * this.listeEntrees.length);
+        let idPlat = parseInt(Math.random() * this.listePlats.length);
+        let idDessert = parseInt(Math.random() * this.listeDesserts.length);
 
         this.entree = this.listeEntrees[idEntree];
         this.plat = this.listePlats[idPlat];
@@ -97,6 +114,7 @@ export default {
           entree: this.entree,
           plat: this.plat,
           dessert: this.dessert,
+          imageEntree: this.entree.lien
         };
       }
     },

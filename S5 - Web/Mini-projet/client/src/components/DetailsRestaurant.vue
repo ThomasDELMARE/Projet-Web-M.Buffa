@@ -1,16 +1,12 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
-    <h1>Détails du restaurant {{ this.nom }}</h1>
+    <B><U><h1 class="md-headline"> Détails du restaurant {{ this.nom }} </h1></U></B>
+    <p class="md-subheadline"> Cuisine de type  {{ this.cuisine }} </p>
+    <p class="md-subheadline"> {{ this.ville }} </p>
 
     <img  width="500" height="600" :src="urlImg">
-
+  
     <carte-restaurant></carte-restaurant>
-        
-    <ul>
-      <li>Nom : {{ this.nom }}</li>
-      <li>Cuisine : {{ this.cuisine }}</li>
-      <li>Ville : {{ this.ville }}</li>
-    </ul>
 
     <l-map style="height: 300px"
     :zoom="zoom" 
@@ -18,7 +14,6 @@
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker :lat-lng="markerLatLng"></l-marker>
     </l-map>
-
 
   </div>
 
