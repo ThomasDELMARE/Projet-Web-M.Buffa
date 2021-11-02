@@ -62,6 +62,8 @@
       </md-table-toolbar>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
+
+        <md-table-cell md-label="Img"><img  width="50" height="50" :src="item.url"></md-table-cell>
         <md-table-cell md-label="Nom" md-sort-by="name">{{
           item.name
         }}</md-table-cell>

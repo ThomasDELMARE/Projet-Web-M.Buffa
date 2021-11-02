@@ -108,10 +108,10 @@ export default {
           console.log(err);
         });
     },
-    searchImage(){
+    async searchImage(){
       if(this.urlImg === null || this.urlImg === "null"){
         window.setImmediate = window.setTimeout;
-        client.search('restaurant '+ this.nom)
+        await client.search('restaurant '+ this.nom)
         .then(images => {
           this.urlImg = images[0].url;
         });
