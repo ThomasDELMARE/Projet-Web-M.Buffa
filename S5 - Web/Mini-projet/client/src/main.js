@@ -29,11 +29,11 @@ const router = new VueRouter({
     [
       {
         path: "/",
-        component: Connexion
+        component: Restaurants
       },
       {
-        path: "/restaurants",
-        component: Restaurants
+        path: "/connexion",
+        component: Connexion
       },
       {
         path: "/details-restaurant/:id",
@@ -48,8 +48,27 @@ const router = new VueRouter({
         component: CarteRestaurant,
       }
     ],
-    mode:'history'
+  mode: 'history'
 });
+
+router.beforeEach((to, from, next) => {
+  // QUAND L UTILISATEUR VEUT SE DECONNECTER
+  if (to.path == "/connexion") {
+    if (localStorage.getItem("activeUser") != "null") {
+      if (from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "details-restaurant/:id" || from.fullPath == "/" || from.fullPath == "/creation-restaurant") {
+        next(localStorage.setItem("activeUser", "null"));
+        next(router.go("/connexion"));
+      }
+    }
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+  console.log(to)
+  console.log(from)
+
+})
 
 new Vue({
   router,
