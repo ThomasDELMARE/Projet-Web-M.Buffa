@@ -5,7 +5,8 @@
       <br />
       {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} €<br />
       {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} €<br />
-      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <img width="400" height="500" v-bind:src="this.menu.dessert.lien">
+      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € 
+      <!-- <img :src="this.menu.dessert.lien"> -->
     </p>
     <p>
       <B><U> Menu gastronomique : </U></B><br />
@@ -82,17 +83,9 @@ export default {
           Math.random() * this.listeDessertsGastronomique.length
         );
 
-        console.log(idEntree);
-        console.log(idPlat);
-        console.log(idDessert);
-
         this.entreeGastronomique = this.listeEntreesGastronomique[idEntree];
         this.platGastronomique = this.listePlatsGastronomique[idPlat];
         this.dessertGastronomique = this.listeDessertsGastronomique[idDessert];
-
-        console.log("Plat gastro : ", this.platGastronomique);
-        console.log("Entree gastro : ", this.entreeGastronomique);
-        console.log("Dessert gastro : ", this.dessertGastronomique);
 
         this.menuGastronomique = {
           entree: this.entreeGastronomique,
@@ -100,7 +93,6 @@ export default {
           dessert: this.dessertGastronomique,
         };
 
-        console.log(this.menu);
       } else {
         let idEntree = parseInt(Math.random() * this.listeEntrees.length);
         let idPlat = parseInt(Math.random() * this.listePlats.length);
@@ -109,15 +101,18 @@ export default {
         this.entree = this.listeEntrees[idEntree];
         this.plat = this.listePlats[idPlat];
         this.dessert = this.listeDesserts[idDessert];
+        this.imageLink = this.dessert.lien
+
+        console.log(this.imageLink)
 
         this.menu = {
           entree: this.entree,
           plat: this.plat,
           dessert: this.dessert,
-          imageEntree: this.entree.lien
+          image: this.imageLink
         };
       }
-    },
+    }
   },
   mounted() {
     this.produits = data.listeProduits;

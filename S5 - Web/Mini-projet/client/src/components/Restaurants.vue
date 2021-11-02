@@ -62,8 +62,9 @@
       </md-table-toolbar>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-
-        <md-table-cell md-label="Img"><img  width="50" height="50" :src="item.url"></md-table-cell>
+        <md-table-cell md-label="Img"
+          ><img width="50" height="50" :src="item.url"
+        /></md-table-cell>
         <md-table-cell md-label="Nom" md-sort-by="name">{{
           item.name
         }}</md-table-cell>
@@ -184,10 +185,6 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    }, 
-    // TODO : On le reintegre ?
-    getColor(index) {
-      return index % 2 ? "lightBlue" : "pink";
     },
     getRestaurantsFromServer() {
       this.sliderValue = document.getElementById("sliderPage").value;
@@ -266,7 +263,7 @@ export default {
     },
     setItem(item) {
       this.item = item;
-    }
+    },
   },
   mounted() {
     // AVANT RENDU HTML
