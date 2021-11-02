@@ -18,6 +18,47 @@
       {{ this.menuGastronomique.dessert.prix }} € <img width="100" height="120" :src="this.menuGastronomique.dessert.lien"><br /><br />
     </p> <br />
 
+    <md-table id="tableEntree" v-model="carteEntree" md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Carte des entrées</h1>
+      </md-table-toolbar>
+      <md-table-row slot="md-table-row" slot-scope="{ item }">
+        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Ajouter au panier">
+          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+        </md-table-cell>
+      </md-table-row>
+    </md-table>
+
+    <md-table id="tablePlat" v-model="cartePlat" md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Carte des plats</h1>
+      </md-table-toolbar>
+      <md-table-row  slot="md-table-row" slot-scope="{ item }">
+        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Ajouter au panier">
+          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+        </md-table-cell>
+      </md-table-row>
+    </md-table>
+
+    <md-table id="tableDessert" v-model="carteDessert" md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Carte des desserts</h1>
+      </md-table-toolbar>
+      <md-table-row  slot="md-table-row" slot-scope="{ item }">
+        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Ajouter au panier">
+          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+        </md-table-cell>
+      </md-table-row>
+    </md-table>
   </div>
 </template>
 
@@ -36,12 +77,14 @@ export default {
 
     listeEntrees: [],
     listeEntreesGastronomique: [],
+    listeEntreesStandards: [],
     listePlats: [],
     listePlatsGastronomique: [],
+    listePlatsStandards: [],
     listeDesserts: [],
     listeDessertsGastronomique: [],
+    listeDessertsStandards: [],
 
-    test:"/ baba_au_rhum.jpg",
     entree: null,
     plat: null,
     dessert: null,
@@ -51,6 +94,10 @@ export default {
 
     menu: null,
     menuGastronomique: null,
+    carteEntree: [],
+    cartePlat: [],
+    carteDessert: [],
+
     dataReady: false,
   }),
   methods: {
@@ -58,15 +105,21 @@ export default {
       this.produits.forEach((p) => {
         if (p.type === "plat" && p.gastronomique == true) {
           this.listePlatsGastronomique.push(p);
+          this.listePlats.push(p);
         } else if (p.type === "dessert" && p.gastronomique == true) {
           this.listeDessertsGastronomique.push(p);
+          this.listeDesserts.push(p);
         } else if (p.type === "entree" && p.gastronomique == true) {
           this.listeEntreesGastronomique.push(p);
+          this.listeEntrees.push(p);
         } else if (p.type === "plat" && p.gastronomique == false) {
+          this.listePlatsStandards.push(p);
           this.listePlats.push(p);
         } else if (p.type === "dessert" && p.gastronomique == false) {
+          this.listeDessertsStandards.push(p);
           this.listeDesserts.push(p);
         } else if (p.type === "entree" && p.gastronomique == false) {
+          this.listeEntreesStandards.push(p);
           this.listeEntrees.push(p);
         }
       });
@@ -94,31 +147,90 @@ export default {
         };
 
       } else {
-        let idEntree = parseInt(Math.random() * this.listeEntrees.length);
-        let idPlat = parseInt(Math.random() * this.listePlats.length);
-        let idDessert = parseInt(Math.random() * this.listeDesserts.length);
+        let idEntree = parseInt(Math.random() * this.listeEntreesStandards.length);
+        let idPlat = parseInt(Math.random() * this.listePlatsStandards.length);
+        let idDessert = parseInt(Math.random() * this.listeDessertsStandards.length);
 
-        this.entree = this.listeEntrees[idEntree];
-        this.plat = this.listePlats[idPlat];
-        this.dessert = this.listeDesserts[idDessert];
-        this.imageLink = this.dessert.lien
-
-        console.log(this.imageLink)
+        this.entree = this.listeEntreesStandards[idEntree];
+        this.plat = this.listePlatsStandards[idPlat];
+        this.dessert = this.listeDessertsStandards[idDessert];
 
         this.menu = {
           entree: this.entree,
           plat: this.plat,
           dessert: this.dessert,
-          image: this.imageLink
         };
       }
-    }
+    },
+    createCarte(){
+      this.createCarteEntree();
+      this.createCartePlat();
+      this.createCarteDessert();
+    },
+    createCarteEntree(){
+      let ids = [];
+      let id;
+      for(let i = 0; i < 3; i++){
+        id = parseInt(Math.random() * this.listeEntrees.length);
+        ids.push(id);
+      }
+      while(ids[0] === ids[1] || ids[0] === ids[2] || ids[1] === ids[2]){
+        ids = [];
+        for(let i = 0; i < 3; i++){
+          id = parseInt(Math.random() * this.listeEntrees.length);
+          ids.push(id);
+        }
+      }
+      ids.forEach((id) => {
+        this.carteEntree.push(this.listeEntrees[id]);
+      });
+      console.log(this.carteEntree);
+    },
+    createCartePlat(){
+      let ids = [];
+      let id;
+      for(let i = 0; i < 3; i++){
+        id = parseInt(Math.random() * this.listePlats.length);
+        ids.push(id);
+      }
+      while(ids[0] === ids[1] || ids[0] === ids[2] || ids[1] === ids[2]){
+        ids = [];
+        for(let i = 0; i < 3; i++){
+          id = parseInt(Math.random() * this.listePlats.length);
+          ids.push(id);
+        }
+      }
+      ids.forEach((id) => {
+        this.cartePlat.push(this.listePlats[id]);
+      });
+      console.log(this.cartePlat);
+    },
+    createCarteDessert(){
+      let ids = [];
+      let id;
+      for(let i = 0; i < 3; i++){
+        id = parseInt(Math.random() * this.listeDesserts.length);
+        ids.push(id);
+      }
+      while(ids[0] === ids[1] || ids[0] === ids[2] || ids[1] === ids[2]){
+        ids = [];
+        for(let i = 0; i < 3; i++){
+          id = parseInt(Math.random() * this.listeDesserts.length);
+          ids.push(id);
+        }
+      }
+      ids.forEach((id) => {
+        this.carteDessert.push(this.listeDesserts[id]);
+      });
+      console.log(this.carteDessert);
+    },
   },
   mounted() {
     this.produits = data.listeProduits;
     this.computeAllProducts();
     this.createMenu(false);
     this.createMenu(true);
+    this.createCarte();
     this.dataReady = true;
   },
 };
