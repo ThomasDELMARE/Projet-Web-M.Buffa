@@ -95,6 +95,8 @@ export default {
     username: null,
     password: null,
     activeUser: null,
+    position: "center",
+    duration: 4000,
 
     showAccountCreatedSnackbar: false,
     showNoExistingAccountSnackbar: false,
@@ -105,11 +107,11 @@ export default {
   methods: {
     localStorageBuild() {
       // Cas où il y a un utilisateur connecté
-      if (localStorage.getItem("activeUser") != "null") {
-        if (this.username != null || this.username != "") {
-          this.activeUser = localStorage.getItem("activeUser");
-        }
-      }
+      //   if (localStorage.getItem("activeUser") != "null") {
+      //     if (this.username != null || this.username != "") {
+      //       this.activeUser = localStorage.getItem("activeUser");
+      //     }
+      //   }
 
       // On génère un utilisateur de base si il n'est pas déjà déclaré
       if (!localStorage.getItem("DELMARE")) {
@@ -152,7 +154,7 @@ export default {
         localStorage.getItem(username) == password
       ) {
         localStorage.setItem("activeUser", username);
-        this.$router.push("Restaurants");
+        this.$router.push("/");
         return false;
       }
 
@@ -199,6 +201,7 @@ export default {
       this.password = "";
     },
     deconnexion() {
+      // TODO
       // Lors de la déconnexion, on est redirigé vers la page de connexion et on supprime la valeur de l'utilisateur actuel
       document.location.href = "/index.html";
       localStorage.setItem("activeUser", "null");
