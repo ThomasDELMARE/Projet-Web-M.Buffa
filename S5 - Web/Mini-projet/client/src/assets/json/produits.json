@@ -5,14 +5,16 @@
             "type": "plat",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/spaghettis_bolognaise.jpg",
+            "prix": "12"
         },
         {
             "nom": "Noisettes de chevreuil sauce grand veneur",
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/noisettes_chevreuil_sauce_grand_veneur.jpeg",
+            "prix": "46"
         },
         {
             
@@ -20,42 +22,48 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/clafoutis_cerises.jpg",
+            "prix": "8"
         },
         {
-            "nom": "Endive jambon",
+            "nom": "Endives aux jambons",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/endives_jambons.jpg",
+            "prix": "10"
         },
         {
-            "nom" : "Tomates Mozza",
+            "nom" : "Tomates Mozzarella",
             "type" : "entree",
             "cuisine" : "italienne",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/tomates_mozza.jpg",
+            "prix": "6"
         },
         {
             "nom" : "Tartare de thon",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/tartare_thon.jpg",
+            "prix": "14"
         },
         {
             "nom" : "Plateau de charcuteries",
             "type": "entree",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/plateau_charcuterie.png",
+            "prix": "9"
         },        
         {
             "nom": "Poires pochées",
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/poires_pochees.jpg",
+            "prix": "5"
 
         },
         {
@@ -63,7 +71,8 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/tiramisu.png",
+            "prix": "4"
         },
 
         {
@@ -71,14 +80,16 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/ile_flottante.jpg",
+            "prix": "4"
         },
         {
             "nom": "Mousse au chocolat",
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/mousse_chocolat.jpg",
+            "prix": "4"
         },
         
         {
@@ -86,7 +97,8 @@
             "type": "dessert",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/tarte_aux_pommes.jpg",
+            "prix": "5"
 
         },
         {
@@ -94,126 +106,144 @@
             "type": "dessert",
             "cuisine": "italienne",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/meringue.jpg",
+            "prix": "3"
         },
         {
             "nom" : "Hamburger",
             "type" : "plat",
             "cuisine": "américaine",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/hamburger.jpg",
+            "prix": "11"
         },
         {
             "nom" : "Pulled Pork",
             "type":"plat",
             "cuisine" : "américaine",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/pulled_pork.jpg",
+            "prix": "13"
         },        
         {
             "nom" : "Pasteis de Nata",
             "type":"dessert",
             "cuisine" : "portugaise",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/pasteis_de_nata.jpg",
+            "prix": "2"
         },        
         {
             "nom" : "Baba au rhum",
             "type":"dessert",
             "cuisine" : "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/baba_au_rhum.jpg",
+            "prix": "5"
         },        
         {
             "nom" : "Baklava",
             "type":"dessert",
             "cuisine" : "turque",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/dessert/baklava.jpg",
+            "prix": "4"
         },
         {
             "nom": "Magret de canard",
             "type": "plat",
             "cuisine": "français",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/magret_de_canard.jpeg",
+            "prix": "24"
         },
         {
             "nom": "Pad thai",
             "type": "plat",
             "cuisine": "thailandais",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/pad_thai.jpg",
+            "prix": "10"
         },
         {
             "nom": "Majadito",
             "type": "plat",
             "cuisine": "bolivien",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/majadito.jpg",
+            "prix": "8"
         },
         {
             "nom": "Chili con carne",
             "type": "plat",
             "cuisine": "mexicain",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/chili_con_carne.jpeg",
+            "prix": "16"
         },
         {
             "nom": "Couscous",
             "type": "plat",
             "cuisine": "maghreb",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/couscous.jpg",
+            "prix": "18"
         },
         {   
             "nom": "Raviole de homard",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/raviole_homard.jpg",
+            "prix": "37"
         },
         {   
             "nom": "Oeufs au plat",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/oeuf_au_plat.jpg",
+            "prix": "95"
         },
         {   
             "nom": "Soupe",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : false,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/soupe.jpg",
+            "prix": "7"
         },
         {
             "nom": "Allumette au foie gras",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/allumette_foie_gras.jpg",
+            "prix": "19"
         },
         {
             "nom": "Terrine de foie gras",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/terrine_foie_gras.jpg",
+            "prix": "16"
         },
         {
             "nom": "Terrine de tomates aux fromages frais",
             "type": "entree",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/entree/terrine_tomates_fromages_frais.jpeg",
+            "prix": "16"
         },
         {
             "nom": "Saint-Jacques rôtie",
             "type": "plat",
             "cuisine": "française",
             "gastronomique" : true,
-            "lien":""
+            "lien":"client/src/assets/photosProduits/plat/saint_jacques_rotie.jpg",
+            "prix": "29"
         }
     ]
 }
