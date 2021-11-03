@@ -58,16 +58,11 @@ router.beforeEach((to, from, next) => {
       if (from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "details-restaurant/:id" || from.fullPath == "/" || from.fullPath == "/creation-restaurant") {
         next(localStorage.setItem("activeUser", "null"));
         next(router.go("/connexion"));
+        this.location.reload()
       }
     }
   }
   next()
-})
-
-router.afterEach((to, from) => {
-  console.log(to)
-  console.log(from)
-
 })
 
 new Vue({

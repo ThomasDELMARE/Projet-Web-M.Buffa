@@ -1,31 +1,53 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
-    <B><U><h1 class="md-headline"> Détails du restaurant {{ this.nom }} </h1></U></B>
-    <p class="md-subheadline"> Cuisine de type  {{ this.cuisine }} </p>
-    <p class="md-subheadline"> {{ this.ville }} </p>
+    <div v-if="dataReady && allowed">
+      <B
+        ><U
+          ><h1 class="md-headline">Détails du restaurant {{ this.nom }}</h1></U
+        ></B
+      >
+      <p class="md-subheadline">Cuisine de type {{ this.cuisine }}</p>
+      <p class="md-subheadline">{{ this.ville }}</p>
 
-    <img  width="500" height="600" :src="urlImg">
-  
-    <carte-restaurant></carte-restaurant>
+      <img width="500" height="600" :src="urlImg" />
 
-    <l-map style="height: 300px"
-    :zoom="zoom" 
-    :center="center">
-      <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng"></l-marker>
-    </l-map>
+      <carte-restaurant></carte-restaurant>
 
+      <l-map style="height: 300px" :zoom="zoom" :center="center">
+        <l-tile-layer :url="url"></l-tile-layer>
+        <l-marker :lat-lng="markerLatLng"></l-marker>
+      </l-map>
+    </div>
+
+    <div v-if="dataReady && !allowed">
+
+      <h1> OH CONNECTE TOI FADA </h1>
+      <!-- Disconnected Snackbar -->
+      <md-snackbar
+        :md-position="position"
+        :md-duration="duration"
+        :md-active.sync="showDisconnectedSnackbar"
+        md-persistent
+      >
+        <span
+          >Vous n'êtes pas connecté, veuillez vous connecter afin de pouvoir
+          accéder à l'intégralité du site !</span
+        >
+      </md-snackbar>
+    </div>
   </div>
-
 </template>
 
 <script>
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from "leaflet";
-import CarteRestaurant from './Menu/CarteRestaurant.vue'
+import CarteRestaurant from "./Menu/CarteRestaurant.vue";
 
-const GoogleImages = require('google-images');
-const client = new GoogleImages('bdb3c367ae547443f', 'AIzaSyATXK5n152fW97tkTSZAIRYT1yIJ2CSk8g');
+const GoogleImages = require("google-images");
+const client = new GoogleImages(
+  "bdb3c367ae547443f",
+  "AIzaSyATXK5n152fW97tkTSZAIRYT1yIJ2CSk8g"
+);
 
 export default {
   name: "DetailsRestaurant",
@@ -33,10 +55,10 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
-    CarteRestaurant
+    CarteRestaurant,
   },
   props: {
-    passTest: String
+    passTest: String,
   },
   computed: {
     idRestaurant() {
@@ -58,7 +80,13 @@ export default {
       markerLatLng: undefined,
       dataReady: false,
       urlImg: null,
-      urlCarte: null
+      urlCarte: null,
+
+      // Etat deconnecte de l'utilisateur
+      allowed: false,
+      showDisconnectedSnackbar: false,
+      position: "top",
+      duration: 4000
     };
   },
   methods: {
@@ -71,28 +99,27 @@ export default {
       this.long = r.address.coord[1];
       this.urlImg = r.url || null;
     },
-    affecterValeursLeaflet(){
+    affecterValeursLeaflet() {
       this.center = [this.lat, this.long];
       this.markerLatLng = [this.lat, this.long];
-
     },
     async fetchRestaurant(id) {
-      this.urlCarte = "/details-restaurant/"+id+"/carte";
+      this.urlCarte = "/details-restaurant/" + id + "/carte";
       let url = "http://localhost:8080/api/restaurants/" + id;
       await fetch(url)
         .then((reponse) => {
           return reponse.json();
         })
         .then((r) => {
-          console.log(r)
+          console.log(r);
           this.affecterValeursRestaurant(r.restaurant);
         });
     },
-    putImage(){
+    putImage() {
       let data = new FormData();
-      data.append('urlImg', this.urlImg);
+      data.append("urlImg", this.urlImg);
       console.log(data);
-      let url = "http://localhost:8080/api/restaurants/"+this.idRestaurant;
+      let url = "http://localhost:8080/api/restaurants/" + this.idRestaurant;
 
       fetch(url, {
         method: "PUT",
@@ -107,16 +134,15 @@ export default {
           console.log(err);
         });
     },
-    async searchImage(){
-      if(this.urlImg === null || this.urlImg === "null"){
+    async searchImage() {
+      if (this.urlImg === null || this.urlImg === "null") {
         window.setImmediate = window.setTimeout;
-        await client.search('restaurant '+ this.nom)
-        .then(images => {
+        await client.search("restaurant " + this.nom).then((images) => {
           this.urlImg = images[0].url;
         });
         this.putImage();
-      }    
-    }
+      }
+    },
   },
   async mounted() {
     await this.fetchRestaurant(this.idRestaurant);
@@ -129,7 +155,14 @@ export default {
       shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
     });
     await this.searchImage();
-    this.dataReady = true ;
+
+    if (localStorage.getItem("activeUser") != "null") {
+      this.allowed = true;
+    } else {
+      this.showDisconnectedSnackbar = true;
+    }
+
+    this.dataReady = true;
   },
 };
 </script>
