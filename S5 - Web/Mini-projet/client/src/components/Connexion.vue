@@ -6,10 +6,10 @@
 
     <br />
 
-    <form v-on:submit="connexion">
+    <form style="width: 500px; margin: auto" v-on:keyup.enter="connexion" v-on:submit="connexion">
       <md-field>
         <label>Nom d'utilisateur</label>
-        <md-input name="username" type="text" required v-model="username" />
+        <md-input style="width: 100px" name="username" type="text" required v-model="username" />
       </md-field>
 
       <md-field>

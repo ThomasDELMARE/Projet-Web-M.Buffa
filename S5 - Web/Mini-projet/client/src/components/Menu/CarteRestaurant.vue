@@ -1,21 +1,21 @@
 <template>
   <div id="CarteRestaurant" v-if="dataReady">
-    <p>
+    <p style="float:left">
       <B><U> Menu du midi : </U></B><br />
       <br />
-      {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <img width="100" height="120" :src="this.menu.entree.lien"> <br />
-      {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <img width="100" height="120" :src="this.menu.plat.lien"> <br />
-      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <img width="100" height="120" :src="this.menu.dessert.lien">
+      {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <br /> <br /> <img width="200" height="250" :src="this.menu.entree.lien"> <br /> <br /> 
+      {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.plat.lien"> <br /> <br /> 
+      {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.dessert.lien"> <br /> <br /> 
     </p>
-    <p>
+    <p style="float: right">
       <B><U> Menu gastronomique : </U></B><br />
       <br />
       {{ this.menuGastronomique.entree.nom }} :
-      {{ this.menuGastronomique.entree.prix }} € <img width="100" height="120" :src="this.menuGastronomique.entree.lien"><br />
+      {{ this.menuGastronomique.entree.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.entree.lien"><br /> <br /> 
       {{ this.menuGastronomique.plat.nom }} :
-      {{ this.menuGastronomique.plat.prix }} € <img width="100" height="120" :src="this.menuGastronomique.plat.lien"><br /><br />
+      {{ this.menuGastronomique.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.plat.lien"><br /><br />
       {{ this.menuGastronomique.dessert.nom }} :
-      {{ this.menuGastronomique.dessert.prix }} € <img width="100" height="120" :src="this.menuGastronomique.dessert.lien"><br /><br />
+      {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
     </p> <br />
 
     <md-table id="tableEntree" v-model="carteEntree" md-card>

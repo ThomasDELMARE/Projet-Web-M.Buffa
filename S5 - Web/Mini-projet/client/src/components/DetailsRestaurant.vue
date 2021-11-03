@@ -1,9 +1,11 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
+    <br />
+
     <div v-if="dataReady && allowed">
       <B
         ><U
-          ><h1 class="md-headline">Détails du restaurant {{ this.nom }}</h1></U
+          ><h1>Détails du restaurant {{ this.nom }}</h1></U
         ></B
       >
       <p class="md-subheadline">Cuisine de type {{ this.cuisine }}</p>
@@ -21,7 +23,6 @@
 
     <div v-if="dataReady && !allowed">
 
-      <h1> OH CONNECTE TOI FADA </h1>
       <!-- Disconnected Snackbar -->
       <md-snackbar
         :md-position="position"
