@@ -155,7 +155,8 @@ export default {
       ) {
         localStorage.setItem("activeUser", username);
         this.$router.push("/");
-        return false;
+        location.reload();
+        //return false;
       }
 
       // Cas où le formulaire de connexion envoyée a un username présent dans la base de données mais un mauvais mot de passe

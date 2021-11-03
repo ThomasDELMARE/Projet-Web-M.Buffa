@@ -25,7 +25,8 @@ export default {
   components: {},
   data: () => ({
     activeUser: localStorage.getItem("activeUser"),
-  })
+  }),
+  
 };
 </script>
 
