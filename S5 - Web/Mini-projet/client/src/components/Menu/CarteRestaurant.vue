@@ -1,82 +1,93 @@
 <template>
-  <div id="CarteRestaurant" v-if="dataReady" style="float:center" >
+  <div id="CarteRestaurant" v-if="dataReady">
   <md-button class="md-primary" @click="printCommande()"><img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"/></md-button>
 
   <md-dialog :md-active.sync="showCommande">
     <md-dialog-title>Commande</md-dialog-title>
 
-    <md-table id="tableEntree" v-model="commande" md-card>
+    <md-table  v-model="commande"  md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
         <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
         <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
+        <md-table-cell md-label="Nombre">{{item.nombre}}</md-table-cell>
+        <md-table-cell md-label="Enlever un produit">
+          <md-button class="md-primary" @click="minusProduitToCommande(item)"><img src="https://img.icons8.com/windows/32/000000/minus.png"/></md-button>
+        </md-table-cell>
       </md-table-row>
+
     </md-table>
     <md-dialog-actions>
+      <p>Total : {{totalCommande}} €</p> <br>
       <md-button class="md-primary" @click="showCommande = false">Close</md-button>
       <md-button class="md-primary" @click="showCommande = false">Save</md-button>
     </md-dialog-actions>
   </md-dialog>
 
-    <p style="float: left;">
+
+  <div class="md-layout md-gutter">
+    <div class="md-layout-item md-size-20">
       <B><U> Menu du midi : </U></B><br />
       <br />
       {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <br /> <br /> <img width="200" height="250" :src="this.menu.entree.lien"> <br /> <br /> 
       {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.plat.lien"> <br /> <br /> 
       {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.dessert.lien"> <br /> <br /> 
-    </p>
-    <p style="float: center;">
-      <B><U> Menu gastronomique : </U></B><br />
-      <br />
-      {{ this.menuGastronomique.entree.nom }} :
-      {{ this.menuGastronomique.entree.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.entree.lien"><br /> <br /> 
-      {{ this.menuGastronomique.plat.nom }} :
-      {{ this.menuGastronomique.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.plat.lien"><br /><br />
-      {{ this.menuGastronomique.dessert.nom }} :
-      {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
-    </p> <br />
+    </div>
 
-    <md-table id="tableEntree" style="width:1500px; display:inline-block" v-model="carteEntree" md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Carte des entrées</h1>
-      </md-table-toolbar>
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
-        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
-        <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
-        </md-table-cell>
-      </md-table-row>
-    </md-table>
+    <div class="md-layout-item md-size-60">
+      <md-table id="tableEntree" v-model="carteEntree" md-card>
+        <md-table-toolbar>
+          <h1 class="md-title">Carte des entrées</h1>
+        </md-table-toolbar>
+        <md-table-row slot="md-table-row" slot-scope="{ item }">
+          <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+          <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+          <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
+          <md-table-cell md-label="Ajouter au panier">
+            <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          </md-table-cell>
+        </md-table-row>
+      </md-table>
 
-    <md-table id="tablePlat" style="width:1500px; display:inline-block" v-model="cartePlat" md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Carte des plats</h1>
-      </md-table-toolbar>
-      <md-table-row  slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
-        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
-        <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
-        </md-table-cell>
-      </md-table-row>
-    </md-table>
+      <md-table id="tablePlat" v-model="cartePlat" md-card>
+        <md-table-toolbar>
+          <h1 class="md-title">Carte des plats</h1>
+        </md-table-toolbar>
+        <md-table-row  slot="md-table-row" slot-scope="{ item }">
+          <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+          <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+          <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
+          <md-table-cell md-label="Ajouter au panier">
+            <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          </md-table-cell>
+        </md-table-row>
+      </md-table>
 
-    <md-table id="tableDessert" style="width:1500px; display:inline-block; margin-left : 200px" class="md-alignment-center" v-model="carteDessert" md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Carte des desserts</h1>
-      </md-table-toolbar>
-      <md-table-row  slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
-        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
-        <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
-        </md-table-cell>
-      </md-table-row>
-    </md-table>
+      <md-table id="tableDessert" class="md-alignment-center" v-model="carteDessert" md-card>
+        <md-table-toolbar>
+          <h1 class="md-title">Carte des desserts</h1>
+        </md-table-toolbar>
+        <md-table-row  slot="md-table-row" slot-scope="{ item }">
+          <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+          <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+          <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
+          <md-table-cell md-label="Ajouter au panier">
+            <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          </md-table-cell>
+        </md-table-row>
+      </md-table>
+      </div>
+      <div class="md-layout-item md-size-20">
+        <B><U> Menu gastronomique : </U></B><br />
+        <br />
+        {{ this.menuGastronomique.entree.nom }} :
+        {{ this.menuGastronomique.entree.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.entree.lien"><br /> <br /> 
+        {{ this.menuGastronomique.plat.nom }} :
+        {{ this.menuGastronomique.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.plat.lien"><br /><br />
+        {{ this.menuGastronomique.dessert.nom }} :
+        {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
+      </div> <br />
+    </div>
   </div>
 </template>
 
@@ -116,7 +127,8 @@ export default {
     cartePlat: [],
     carteDessert: [],
 
-    commande:[],
+    commande: [],
+    totalCommande: 0,
 
     showCommande: false,
     dataReady: false,
@@ -250,8 +262,33 @@ export default {
       this.showCommande = true;
     },
     addProduitToCommande(item){
-      this.commande.push(item);
-    }
+      let check = 0;
+      this.commande.forEach((p) => {
+        if(p.nom === item.nom){
+          p.nombre++;
+          check = 1;
+        }
+      });
+      if (check === 0) {
+        this.commande.push(item);
+        this.commande[this.commande.length - 1].nombre = 1;
+      }
+      this.totalCommande += parseInt(item.prix);
+    },
+    minusProduitToCommande(item){
+      if(item.nombre > 0){
+        item.nombre--;
+        this.totalCommande -= parseInt(item.prix);
+      }
+      if(item.nombre === 0){
+        let length = this.commande.length
+        for(let i = 0; i < length; i++){
+          if(this.commande[i].nombre === 0){
+            this.commande.splice(i, 1)
+          }
+        }
+      }
+    },
   },
   mounted() {
     this.produits = data.listeProduits;
