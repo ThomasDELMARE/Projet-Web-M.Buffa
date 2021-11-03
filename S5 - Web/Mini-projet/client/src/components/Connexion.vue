@@ -84,6 +84,16 @@
     >
       <span>Veuillez entrer un mot de passe et un nom d'utilisateur.</span>
     </md-snackbar>
+
+    <!-- Nice try ! -->
+    <md-snackbar
+      :md-position="position"
+      :md-duration="duration"
+      :md-active.sync="showNiceTrySnackbar"
+      md-persistent
+    >
+      <span>Really ? Nice try :)</span>
+    </md-snackbar>
   </div>
 </template>
 
@@ -103,6 +113,7 @@ export default {
     showWrongPasswordSnackbar: false,
     showAccountAlreadyCreated: false,
     showEmptyCredentialsSnackbar: false,
+    showNiceTrySnackbar: false
   }),
   methods: {
     localStorageBuild() {
@@ -147,6 +158,16 @@ export default {
         this.showEmptyCredentialsSnackbar = true;
         return;
       }
+      
+      if(username == "admin" || password == "admin"){
+        this.showNiceTrySnackbar = true;
+        return;
+      }
+
+      if(username == "atari breakout"){
+        document.location.replace("https://elgoog.im/breakout/");
+        return;
+      }
 
       // Cas où le formulaire de connexion envoyée permet de connecter l'utilisateur
       if (
@@ -156,7 +177,6 @@ export default {
         localStorage.setItem("activeUser", username);
         this.$router.push("/");
         location.reload();
-        //return false;
       }
 
       // Cas où le formulaire de connexion envoyée a un username présent dans la base de données mais un mauvais mot de passe
@@ -200,13 +220,7 @@ export default {
       // On réinitialise les valeurs dans le formulaire de connexion
       this.username = "";
       this.password = "";
-    },
-    deconnexion() {
-      // TODO
-      // Lors de la déconnexion, on est redirigé vers la page de connexion et on supprime la valeur de l'utilisateur actuel
-      document.location.href = "/index.html";
-      localStorage.setItem("activeUser", "null");
-    },
+    }
   },
   mounted() {
     this.localStorageBuild();
