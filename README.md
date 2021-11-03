@@ -1,9 +1,6 @@
-# M1
+# MINI-PROJET WEB
 
-Repository perso pour l'année de M1 MIAGE
+Repository de notre projet Web, développé par monsieur PARIZET Nicolas et monsieur DELMARE Thomas.
 
-# Git ignore files still cached
-
-1. git rm -r --cached .  
-2. git add .
-3. git commit -m "Removing ignored files"
+Lien de notre Kanban : https://trello.com/b/Ji2pmYLM/mini-projet-web 
+Lien de notre vidéo de présentation du projet :
