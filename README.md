@@ -1,9 +1,14 @@
-# M1
+# MINI-PROJET WEB
 
-Repository perso pour l'année de M1 MIAGE
+Repository de notre projet Web, développé par monsieur **PARIZET Nicolas** et monsieur **DELMARE Thomas**.  
 
-# Git ignore files still cached
+Afin de démarrer le projet il faudra se positionner à la source du projet "serveur" et lancer cette commande :
+  - **node serverCrudWithMongo.js**  
 
-1. git rm -r --cached .  
-2. git add .
-3. git commit -m "Removing ignored files"
+Il faudra ensuite démarrer le projet client, se placer à la source du projet "client" et lancer cette commande :
+  - **npm run serve**  
+
+
+**Lien de notre Kanban** : https://trello.com/b/Ji2pmYLM/mini-projet-web  
+
+**Lien de notre vidéo de présentation du projet** :
