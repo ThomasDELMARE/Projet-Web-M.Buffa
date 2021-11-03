@@ -1,5 +1,23 @@
 <template>
   <div id="CarteRestaurant" v-if="dataReady">
+  <md-button class="md-primary" @click="printCommande()"><img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"/></md-button>
+
+  <md-dialog :md-active.sync="showCommande">
+    <md-dialog-title>Commande</md-dialog-title>
+
+    <md-table id="tableEntree" v-model="commande" md-card>
+      <md-table-row slot="md-table-row" slot-scope="{ item }">
+        <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
+        <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
+      </md-table-row>
+    </md-table>
+    <md-dialog-actions>
+      <md-button class="md-primary" @click="showCommande = false">Close</md-button>
+      <md-button class="md-primary" @click="showCommande = false">Save</md-button>
+    </md-dialog-actions>
+  </md-dialog>
+
     <p>
       <B><U> Menu du midi : </U></B><br />
       <br />
@@ -25,9 +43,9 @@
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
         <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
         <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
         </md-table-cell>
       </md-table-row>
     </md-table>
@@ -39,23 +57,23 @@
       <md-table-row  slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
         <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
         <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
         </md-table-cell>
       </md-table-row>
     </md-table>
 
-    <md-table id="tableDessert" v-model="carteDessert" md-card>
+    <md-table id="tableDessert" class="md-alignment-center" v-model="carteDessert" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des desserts</h1>
       </md-table-toolbar>
       <md-table-row  slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Img"><img width="50" height="50" :src="item.lien"></md-table-cell>
         <md-table-cell md-label="Nom">{{item.nom}}</md-table-cell>
-        <md-table-cell md-label="Prix">{{item.prix}}</md-table-cell>
+        <md-table-cell md-label="Prix">{{item.prix}} €</md-table-cell>
         <md-table-cell md-label="Ajouter au panier">
-          <md-button class="md-primary"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
+          <md-button class="md-primary" @click="addProduitToCommande(item)"><img src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"/></md-button>
         </md-table-cell>
       </md-table-row>
     </md-table>
@@ -98,6 +116,9 @@ export default {
     cartePlat: [],
     carteDessert: [],
 
+    commande:[],
+
+    showCommande: false,
     dataReady: false,
   }),
   methods: {
@@ -224,6 +245,13 @@ export default {
       });
       console.log(this.carteDessert);
     },
+    printCommande(){
+      console.log(this.commande);
+      this.showCommande = true;
+    },
+    addProduitToCommande(item){
+      this.commande.push(item);
+    }
   },
   mounted() {
     this.produits = data.listeProduits;
