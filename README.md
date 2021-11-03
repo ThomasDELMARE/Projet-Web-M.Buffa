@@ -2,10 +2,10 @@
 
 Repository de notre projet Web, développé par monsieur **PARIZET Nicolas** et monsieur **DELMARE Thomas**.  
 
-Afin de démarrer le projet il faudra accéder, grâce à une ligne de commande à la source du projet "serveur" et lancer cette commande :
+Afin de démarrer le projet il faudra se positionner à la source du projet "serveur" et lancer cette commande :
   - **node serverCrudWithMongo.js**  
 
-Il faudra ensuite démarrer le projet client, grâce à une ligne de commande à la source du projet "client" et lancer cette commande :
+Il faudra ensuite démarrer le projet client, se placer à la source du projet "client" et lancer cette commande :
   - **npm run serve**  
 
 
