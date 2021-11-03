@@ -1,19 +1,28 @@
 <template>
-  <div id="app">
+  <div id="app" style="margin: 0">
     <div v-if="activeUser != 'null'">
-      <router-link class="router-link" to="/">Accueil</router-link> &nbsp;
-      <router-link class="router-link" to="/creation-restaurant"
-        >Création de restaurant</router-link
-      >
-      &nbsp;
-      <router-link class="router-link" to="/connexion"
-        >Deconnexion</router-link
-      >
-      &nbsp;
+      <md-tabs class="md-primary" md-alignment="fixed" md-sync-route>
+        <md-tab id="accueil" md-label="Accueil" to="/" exact></md-tab>
+
+        <md-tab
+          id="creation-restaurant"
+          md-label="Création de restaurant"
+          to="/creation-restaurant"
+        ></md-tab>
+
+        <md-tab style="background-color:red"
+          id="deconnexion"
+          md-label="Deconnexion"
+          to="/connexion"
+        ></md-tab>
+      </md-tabs>
       <router-view></router-view>
     </div>
+
     <div v-if="activeUser == 'null'">
-      <router-link class="router-link" to="/connexion">Connexion</router-link> &nbsp;
+      <md-tabs class="md-primary" md-alignment="fixed" md-sync-route>
+        <md-tab id="connexion" md-label="Connexion" to="/connexion" exact></md-tab>
+      </md-tabs>
       <router-view></router-view>
     </div>
   </div>
@@ -26,7 +35,6 @@ export default {
   data: () => ({
     activeUser: localStorage.getItem("activeUser"),
   }),
-  
 };
 </script>
 
@@ -39,11 +47,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.router-link{
-  color:black !important;
+.router-link {
+  color: black !important;
   border-style: solid;
   border-width: 2px;
-  padding:3px
+  padding: 3px;
 }
-
 </style>
