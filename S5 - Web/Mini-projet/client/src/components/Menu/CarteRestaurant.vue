@@ -1,5 +1,5 @@
 <template>
-  <div id="CarteRestaurant" v-if="dataReady">
+  <div id="CarteRestaurant" v-if="dataReady" style="float:center" >
   <md-button class="md-primary" @click="printCommande()"><img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"/></md-button>
 
   <md-dialog :md-active.sync="showCommande">
@@ -18,14 +18,14 @@
     </md-dialog-actions>
   </md-dialog>
 
-    <p style="float: left">
+    <p style="float: left;">
       <B><U> Menu du midi : </U></B><br />
       <br />
       {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <br /> <br /> <img width="200" height="250" :src="this.menu.entree.lien"> <br /> <br /> 
       {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.plat.lien"> <br /> <br /> 
       {{ this.menu.dessert.nom }} : {{ this.menu.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.dessert.lien"> <br /> <br /> 
     </p>
-    <p style="float: right">
+    <p style="float: center;">
       <B><U> Menu gastronomique : </U></B><br />
       <br />
       {{ this.menuGastronomique.entree.nom }} :
@@ -36,7 +36,7 @@
       {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
     </p> <br />
 
-    <md-table id="tableEntree" style="width:1500px" v-model="carteEntree" md-card>
+    <md-table id="tableEntree" style="width:1500px; display:inline-block" v-model="carteEntree" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des entrées</h1>
       </md-table-toolbar>
@@ -50,7 +50,7 @@
       </md-table-row>
     </md-table>
 
-    <md-table id="tablePlat" style="width:1500px" v-model="cartePlat" md-card>
+    <md-table id="tablePlat" style="width:1500px; display:inline-block" v-model="cartePlat" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des plats</h1>
       </md-table-toolbar>
@@ -64,7 +64,7 @@
       </md-table-row>
     </md-table>
 
-    <md-table id="tableDessert" style="width:1500px" class="md-alignment-center" v-model="carteDessert" md-card>
+    <md-table id="tableDessert" style="width:1500px; display:inline-block; margin-left : 200px" class="md-alignment-center" v-model="carteDessert" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des desserts</h1>
       </md-table-toolbar>
