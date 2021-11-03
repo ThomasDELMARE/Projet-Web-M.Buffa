@@ -18,7 +18,7 @@
     </md-dialog-actions>
   </md-dialog>
 
-    <p>
+    <p style="float: left">
       <B><U> Menu du midi : </U></B><br />
       <br />
       {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <br /> <br /> <img width="200" height="250" :src="this.menu.entree.lien"> <br /> <br /> 
@@ -36,7 +36,7 @@
       {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
     </p> <br />
 
-    <md-table id="tableEntree" v-model="carteEntree" md-card>
+    <md-table id="tableEntree" style="width:1500px" v-model="carteEntree" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des entrées</h1>
       </md-table-toolbar>
@@ -50,7 +50,7 @@
       </md-table-row>
     </md-table>
 
-    <md-table id="tablePlat" v-model="cartePlat" md-card>
+    <md-table id="tablePlat" style="width:1500px" v-model="cartePlat" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des plats</h1>
       </md-table-toolbar>
@@ -64,7 +64,7 @@
       </md-table-row>
     </md-table>
 
-    <md-table id="tableDessert" class="md-alignment-center" v-model="carteDessert" md-card>
+    <md-table id="tableDessert" style="width:1500px" class="md-alignment-center" v-model="carteDessert" md-card>
       <md-table-toolbar>
         <h1 class="md-title">Carte des desserts</h1>
       </md-table-toolbar>
