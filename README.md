@@ -13,14 +13,19 @@ Pour se connecter au site, voici vos identifiants :
   - Mot de passe : buffa2021
 
 **Features du projet :**
+  -  Fonctions de bases : liste des restaurants, recherche d'un restaurant par son nom, changement du nombre de lignes de la liste, boutons de détail de chacun des retaurants et suppression
   -  Affichage de photographie du restaurant via **l'api Google** et la librairie NPM Google-Images : https://www.npmjs.com/package/google-images
-      - URLs sauvegardés en base de données afin d'éviter la surcharge de requêtes dans l'API Google     
+      => Afin d'éviter une surcharge des requêtes via l'API Google qui n'autorise que 100 requête/jours, les URLs sont sauvegardés en base de données pour chaque restaurants lors du premier chargement du détail de celui-ci. Sinon une image par defaut est définie.
   -  Gestion des utilisateurs **connectés** et persistence des onglets selon la connexion utilisateur via **LocalStorage**
+      => Le site n'est pas accessible temps que l'utilisateur n'est pas connecté. Le router est édité en fonction de l'état de connexion.
   -  Génération aléatoire de **menus** pour chaque restaurant
-  -  Possibilité de faire des **commandes** dans chacun des restaurants
-  -  Possibilité de créer des restaurants et de récupérer les données d'une adresse grâce à la libraire **Algolia** : https://www.algolia.com/
+      => Les menus et cartes de chacuns des restaurants sont générés aléatoirement via un fichier local json.
+  -  Possibilité de faire des **commandes** dans chacun des restaurants (+ persistance ?).
+  -  Possibilité de créer des restaurants.
+      => Les informations de l'addresse peuvent être récupérés plus facilement via la libraire **Algolia Places** https://www.algolia.com/
   -  Affichage de l'emplacement des restaurants sur une carte grâce à la librairie **Vue 2 Leaflet** : https://vue2-leaflet.netlify.app/
   -  Design de l'application fait avec la libraire **Vue Material** : https://www.creative-tim.com/vuematerial/ 
+  -  Des Easter Eggs ont été implémentés dans l'applications ! A vous de jouer !
  
 <div align="center">
   <img src="https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif"/>
