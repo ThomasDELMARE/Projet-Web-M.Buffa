@@ -86,7 +86,7 @@ export default {
       // Etat deconnecte de l'utilisateur
       allowed: false,
       showDisconnectedSnackbar: false,
-      position: "top",
+      position: "center",
       duration: 4000,
     };
   },
@@ -112,14 +112,12 @@ export default {
           return reponse.json();
         })
         .then((r) => {
-          console.log(r);
           this.affecterValeursRestaurant(r.restaurant);
         });
     },
     putImage() {
       let data = new FormData();
       data.append("urlImg", this.urlImg);
-      console.log(data);
       let url = "http://localhost:8080/api/restaurants/" + this.idRestaurant;
 
       fetch(url, {

@@ -102,7 +102,6 @@ export default {
       let donneesFormulaire = new FormData(form);
       donneesFormulaire.append("lat", this.lat);
       donneesFormulaire.append("lng", this.lng);
-      console.log(donneesFormulaire);
       let url = "http://localhost:8080/api/restaurants";
 
       fetch(url, {
@@ -110,9 +109,8 @@ export default {
         body: donneesFormulaire,
       })
         .then((responseJSON) => {
-          responseJSON.json().then((res) => {
+          responseJSON.json().then(() => {
             // Maintenant res est un vrai objet JavaScript
-            console.log("Restaurant ajouté, " + res.msg);
             this.ajoutRestaurantSnackbar = true;
           });
         })
@@ -156,7 +154,6 @@ export default {
 
     this.instance.on("change", (e) => {
       this.$emit("change", e);
-      //console.log(e);
       this.adresse = e.suggestion.name;
       this.zipcode = e.suggestion.postcode;
       this.city = e.suggestion.city;
