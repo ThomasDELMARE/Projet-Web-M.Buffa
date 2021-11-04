@@ -88,6 +88,8 @@
         {{ this.menuGastronomique.dessert.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.dessert.lien"><br /><br />
       </div> <br />
     </div>
+      <br />
+      <br />
   </div>
 </template>
 
