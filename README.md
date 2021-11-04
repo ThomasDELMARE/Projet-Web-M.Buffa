@@ -21,7 +21,7 @@ Pour se connecter au site, voici vos identifiants :
   -  Affichage de l'emplacement des restaurants sur une carte grâce à la librairie **Vue 2 Leaflet** : https://vue2-leaflet.netlify.app/
   -  Design de l'application fait avec la libraire **Vue Material** : https://www.creative-tim.com/vuematerial/ 
   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp ![Alt Text](https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Alt Text](https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif)
 
 **Lien de la base de données utilisée** :  
 
