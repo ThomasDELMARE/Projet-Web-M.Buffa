@@ -65,7 +65,11 @@
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
 
-        <md-table-cell md-label="Img"><img v-if="item.url != null"  width="50" height="50" :src="item.url"></md-table-cell>
+        <md-table-cell md-label="Image">
+          <img v-if="item.url != null"  width="50" height="50" :src="item.url">
+          <img v-if="item.url == null"  width="50" height="50" src="https://cdn.iconscout.com/icon/free/png-256/restaurant-1495593-1267764.png">
+        </md-table-cell>
+        
         <md-table-cell md-label="Nom" md-sort-by="name">{{
           item.name
         }}</md-table-cell>

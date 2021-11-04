@@ -10,7 +10,7 @@
         <md-input name="nom" type="text" required v-model="nom"></md-input>
       </md-field>
 
-      <md-field>
+      <md-field id="cuisine">
         <label>Entrer la cuisine</label>
         <md-input
           name="cuisine"
@@ -57,8 +57,6 @@
 
       <button class="md-button md-raised">Ajouter</button>
     </form>
-
-    <p>{{ lat }} - {{ lng }}</p>
 
     <!-- Ajout restaurant réussi snackbar -->
     <md-snackbar
@@ -145,8 +143,12 @@ export default {
     this.checkIfUserConnected();
     // make sure Vue does not know about the input
     // this way it can properly unmount
+    
     this.input = document.createElement("input");
-    this.$el.appendChild(this.input);
+    // this.$el.appendChild(this.input);
+    var restaurantId = document.getElementById('cuisine');
+    restaurantId.insertAdjacentElement('afterend', this.input);
+
 
     this.instance = places({
       container: this.input,
