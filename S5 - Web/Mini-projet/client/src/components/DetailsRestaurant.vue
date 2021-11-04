@@ -1,26 +1,27 @@
 <template>
   <div id="DetailsRestaurant" v-if="dataReady">
     <br />
-
     <div v-if="dataReady && allowed">
-      <B
-        ><U
-          ><h1>Détails du restaurant {{ this.nom }}</h1></U
-        ></B
-      >
-      <p class="md-subheadline">Cuisine de type {{ this.cuisine }}</p>
-      <p class="md-subheadline">{{ this.ville }}</p>
-
-      <img width="500" height="600" :src="urlImg" />
-
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item md-size-30">
+          <img width="500" height="600" :src="urlImg" />
+        </div>  
+        <div class="md-layout-item md-size-40">
+          <B><U>
+          <h1>{{ this.nom }}</h1>
+          </U></B>
+          <p class="md-subheadline">Type de cuisine : {{ this.cuisine }}</p>
+          <p class="md-subheadline">{{ this.ville }}</p>
+        </div>
+        <div class="md-layout-item md-size-30">
+          <l-map style="height: 300px" :zoom="zoom" :center="center">
+            <l-tile-layer :url="url"></l-tile-layer>
+            <l-marker :lat-lng="markerLatLng"></l-marker>
+          </l-map>
+        </div>
+      </div>  
       <carte-restaurant></carte-restaurant>
-
-      <l-map style="height: 300px" :zoom="zoom" :center="center">
-        <l-tile-layer :url="url"></l-tile-layer>
-        <l-marker :lat-lng="markerLatLng"></l-marker>
-      </l-map>
     </div>
-
     <div v-if="dataReady && !allowed">
       <!-- Disconnected Snackbar -->
       <md-snackbar
