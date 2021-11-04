@@ -78,7 +78,7 @@
       </md-table>
       </div>
       <div class="md-layout-item md-size-20">
-        <B><U> Menu gastronomique : {{menu.prix}} €</U></B><br />
+        <B><U> Menu gastronomique : {{menuGastronomique.prix}} €</U></B><br />
         <br />
         {{ this.menuGastronomique.entree.nom }} :
         {{ this.menuGastronomique.entree.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.entree.lien"><br /> <br /> 
@@ -178,6 +178,7 @@ export default {
           plat: this.platGastronomique,
           dessert: this.dessertGastronomique,
         };
+        this.calculPrixMenu(gastronomique);
 
       } else {
         let idEntree = parseInt(Math.random() * this.listeEntreesStandards.length);
@@ -199,9 +200,18 @@ export default {
     },
     calculPrixMenu(gastronomique){
       if(gastronomique){
-        this.menuGastronomique.prix = (parseInt(this.menuGastronomique.entree.prix) + parseInt(this.menuGastronomique.plat.prix) + parseInt(this.menuGastronomique.dessert.prix))*4/5 ;
+        let entree = parseInt(this.menuGastronomique.entree.prix)
+        let plat = parseInt(this.menuGastronomique.plat.prix)
+        let dessert = parseInt(this.menuGastronomique.dessert.prix)
+        console.log(entree)
+        console.log(dessert)
+        console.log(plat)
+        this.menuGastronomique.prix = entree + plat + dessert;
       }else{
-        this.menu.prix = parseInt(this.menu.entree.prix + this.menu.plat.prix + this.menu.dessert.prix);
+        let entree = parseInt(this.menu.entree.prix)
+        let plat = parseInt(this.menu.plat.prix)
+        let dessert = parseInt(this.menu.dessert.prix)
+        this.menu.prix = entree + plat + dessert;
       }
     },
     createCarte(){
