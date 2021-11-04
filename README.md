@@ -12,6 +12,8 @@ Pour se connecter au site, voici vos identifiants :
   - Identifiant : BUFFA  
   - Mot de passe : buffa2021
 
+**Features du projet :**
+
 **Lien de la base de données utilisée** :  
 
 **Lien de notre Kanban** : https://trello.com/b/Ji2pmYLM/mini-projet-web  
