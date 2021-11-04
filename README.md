@@ -22,9 +22,8 @@ Pour se connecter au site, voici vos identifiants :
   -  Design de l'application fait avec la libraire **Vue Material** : https://www.creative-tim.com/vuematerial/ 
  
 <p align="center">
-  <img src="https://github.com/waldyr/Sublime-Installer/blob/master/sublime_text.png?raw=true" alt="Sublime's custom image"/>
+  <img src="https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif"/>
 </p>
-![Alt Text](https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif)
 
 **Lien de la base de données utilisée** :  
 
