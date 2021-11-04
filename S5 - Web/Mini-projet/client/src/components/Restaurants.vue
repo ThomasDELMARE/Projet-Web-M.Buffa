@@ -265,8 +265,14 @@ export default {
     setItem(item) {
       this.item = item;
     },
+    checkIfUserConnected(){
+      if(localStorage.getItem("activeUser") == "null" || localStorage.getItem("activeUser") == "" || localStorage.getItem("activeUser") == null){
+      document.location.replace("/connexion");
+      }
+    }
   },
   mounted() {
+    this.checkIfUserConnected();    
     // AVANT RENDU HTML
     this.getRestaurantsFromServer();
   },

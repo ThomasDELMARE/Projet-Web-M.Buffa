@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
   // QUAND L UTILISATEUR VEUT SE DECONNECTER
   if (to.path == "/connexion") {
     if (localStorage.getItem("activeUser") != "null") {
-      if (from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "/details-restaurant/:id/carte" || from.fullPath == "details-restaurant/:id" || from.fullPath == "/" || from.fullPath == "/creation-restaurant") {
+      if (from.fullPath.includes("/details-restaurant") || from.fullPath == "/" || from.fullPath == "/creation-restaurant") {
         next(localStorage.setItem("activeUser", "null"));
         next(router.go("/connexion"));
         this.location.reload()

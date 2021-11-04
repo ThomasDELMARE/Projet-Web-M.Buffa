@@ -68,7 +68,7 @@
       md-persistent
     >
       <span>Le restaurant a bien été ajouté !</span>
-    </md-snackbar>  
+    </md-snackbar>
   </div>
 </template>
 
@@ -131,8 +131,18 @@ export default {
       this.lat = "";
       this.lng = "";
     },
+    checkIfUserConnected() {
+      if (
+        localStorage.getItem("activeUser") == "null" ||
+        localStorage.getItem("activeUser") == "" ||
+        localStorage.getItem("activeUser") == null
+      ) {
+        document.location.replace("/connexion");
+      }
+    },
   },
   mounted() {
+    this.checkIfUserConnected();
     // make sure Vue does not know about the input
     // this way it can properly unmount
     this.input = document.createElement("input");

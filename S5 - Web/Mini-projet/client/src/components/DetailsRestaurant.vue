@@ -22,7 +22,6 @@
     </div>
 
     <div v-if="dataReady && !allowed">
-
       <!-- Disconnected Snackbar -->
       <md-snackbar
         :md-position="position"
@@ -87,7 +86,7 @@ export default {
       allowed: false,
       showDisconnectedSnackbar: false,
       position: "top",
-      duration: 4000
+      duration: 4000,
     };
   },
   methods: {
@@ -144,8 +143,18 @@ export default {
         this.putImage();
       }
     },
+    checkIfUserConnected() {
+      if (
+        localStorage.getItem("activeUser") == "null" ||
+        localStorage.getItem("activeUser") == "" ||
+        localStorage.getItem("activeUser") == null
+      ) {
+        document.location.replace("/connexion");
+      }
+    },
   },
   async mounted() {
+    this.checkIfUserConnected();
     await this.fetchRestaurant(this.idRestaurant);
     this.affecterValeursLeaflet();
 
