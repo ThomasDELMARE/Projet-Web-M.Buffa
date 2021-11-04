@@ -27,7 +27,7 @@
 
   <div class="md-layout md-gutter">
     <div class="md-layout-item md-size-20">
-      <B><U> Menu du midi : </U></B><br />
+      <B><U> Menu du midi : {{menu.prix}} €</U></B><br />
       <br />
       {{ this.menu.entree.nom }} : {{ this.menu.entree.prix }} € <br /> <br /> <img width="200" height="250" :src="this.menu.entree.lien"> <br /> <br /> 
       {{ this.menu.plat.nom }} : {{ this.menu.plat.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menu.plat.lien"> <br /> <br /> 
@@ -78,7 +78,7 @@
       </md-table>
       </div>
       <div class="md-layout-item md-size-20">
-        <B><U> Menu gastronomique : </U></B><br />
+        <B><U> Menu gastronomique : {{menu.prix}} €</U></B><br />
         <br />
         {{ this.menuGastronomique.entree.nom }} :
         {{ this.menuGastronomique.entree.prix }} € <br /> <br />  <img width="200" height="250" :src="this.menuGastronomique.entree.lien"><br /> <br /> 
@@ -193,6 +193,15 @@ export default {
           plat: this.plat,
           dessert: this.dessert,
         };
+
+        this.calculPrixMenu(gastronomique);
+      }
+    },
+    calculPrixMenu(gastronomique){
+      if(gastronomique){
+        this.menuGastronomique.prix = (parseInt(this.menuGastronomique.entree.prix) + parseInt(this.menuGastronomique.plat.prix) + parseInt(this.menuGastronomique.dessert.prix))*4/5 ;
+      }else{
+        this.menu.prix = parseInt(this.menu.entree.prix + this.menu.plat.prix + this.menu.dessert.prix);
       }
     },
     createCarte(){
