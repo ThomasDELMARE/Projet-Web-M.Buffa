@@ -13,7 +13,10 @@ Pour se connecter au site, voici vos identifiants :
   - Mot de passe : buffa2021
 
 **Features du projet :**
-  -  Affichage de photographie du restaurant via l'api Google : https://www.npmjs.com/package/google-images
+  -  Affichage de photographie du restaurant via l'api Google et une librarie : https://www.npmjs.com/package/google-images  
+
+  
+  
 
 **Lien de la base de données utilisée** :  
 
