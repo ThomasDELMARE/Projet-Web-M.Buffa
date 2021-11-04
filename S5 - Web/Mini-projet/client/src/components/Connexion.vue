@@ -22,7 +22,7 @@
       <md-button class="md-raised md-primary" v-on:click="connexion"
         >Se connecter</md-button
       >
-      <md-button class="md-raised md-primary" v-on:submit="creerCompte"
+      <md-button class="md-raised md-primary" v-on:click="creerCompte"
         >Créer un compte</md-button
       >
 
@@ -206,7 +206,7 @@ export default {
         this.showAccountAlreadyCreated = true;
       }
 
-      // Cas où l'utilisateur veut créer un compte vusernamee
+      // Cas où l'utilisateur veut créer un compte vide
       if (username == "" || password == "") {
         this.showEmptyCredentialsSnackbar = true;
       }
