@@ -19,12 +19,16 @@ Pour se connecter au site, voici vos identifiants :
   <img src="https://media.giphy.com/media/sMP3i5b6qGQHvSIFvR/giphy.gif"/>
 </div>
 
+<br />
+
   -  Affichage de photographie du restaurant via **l'api Google** et la librairie NPM Google-Images : https://www.npmjs.com/package/google-images
       => Afin d'éviter une surcharge des requêtes via l'API Google qui n'autorise que 100 requête/jours, les URLs sont sauvegardés en base de données pour chaque restaurants lors du premier chargement du détail de celui-ci. Sinon une image par defaut est définie.
       
 <div align="center">
   <img src="https://media.giphy.com/media/zpehynVnhUkbPMMGGy/giphy.gif"/>
 </div>
+
+<br />
       
   -  Gestion des utilisateurs **connectés** et persistence des onglets selon la connexion utilisateur via **LocalStorage**
       => Le site n'est pas accessible temps que l'utilisateur n'est pas connecté. Le router est édité en fonction de l'état de connexion.
@@ -33,6 +37,8 @@ Pour se connecter au site, voici vos identifiants :
   <img src="https://media.giphy.com/media/t2ZzesoEGVEGgDuuOt/giphy.gif"/>
 </div>
 
+<br />
+
 -  Génération aléatoire de **menus** pour chaque restaurant
       => Les menus et cartes de chacuns des restaurants sont générés aléatoirement via un fichier local json.
 
@@ -40,11 +46,15 @@ Pour se connecter au site, voici vos identifiants :
   <img src="https://media.giphy.com/media/zW3VgwAYNWMOGoZsJC/giphy.gif"/>
 </div>
 
+<br />
+
   -  Possibilité de faire des **commandes** dans chacun des restaurants (+ persistance ?).
   
 <div align="center">
   <img src="https://media.giphy.com/media/GOiwo3YE8nkEjpcxfb/giphy.gif"/>
 </div>
+
+<br />
 
   -  Possibilité de créer des restaurants.
       => Les informations de l'addresse peuvent être récupérés plus facilement via la libraire **Algolia Places** https://www.algolia.com/
@@ -53,11 +63,15 @@ Pour se connecter au site, voici vos identifiants :
   <img src="https://media.giphy.com/media/zeDb3FwJ8mcBeRUIY7/giphy.gif"/>
 </div>
 
+<br />
+
 -  Affichage de l'emplacement des restaurants sur une carte grâce à la librairie **Vue 2 Leaflet** : https://vue2-leaflet.netlify.app/
 
 <div align="center">
   <img src="https://media.giphy.com/media/5BtFiV3pgr7BDcJ4U7/giphy.gif"/>
 </div>
+
+<br />
 
 -  Design de l'application fait avec la libraire **Vue Material** : https://www.creative-tim.com/vuematerial/ 
 
@@ -65,11 +79,15 @@ Pour se connecter au site, voici vos identifiants :
   <img src="https://media.giphy.com/media/Y9x7tApdD8Iep9MMWB/giphy.gif"/>
 </div>
 
+<br />
+
 -  Des Easter Eggs ont été implémentés dans l'applications ! A vous de jouer !
  
 <div align="center">
   <img src="https://media.giphy.com/media/uikTX95XMDAdTbiFH8/giphy.gif"/>
 </div>
+
+<br />
 
 **Lien de la base de données utilisée** :  
 
