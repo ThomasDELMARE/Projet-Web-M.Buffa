@@ -8,6 +8,8 @@ Afin de démarrer le projet il faudra se positionner à la source du projet "ser
 Il faudra ensuite démarrer le projet client, se placer à la source du projet "client" et lancer cette commande :
   - **npm run serve**  
 
+Il est aussi préférable de nettoyer les données présentes dans votre localStorage sur http://localhost:8081/.
+
 Pour se connecter au site, voici vos identifiants :
   - Identifiant : BUFFA  
   - Mot de passe : buffa2021
