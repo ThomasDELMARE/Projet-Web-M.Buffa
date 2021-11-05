@@ -135,7 +135,7 @@ exports.createRestaurant = async (formData) => {
 		let toInsert = {
 			name: formData.nom,
 			cuisine: formData.cuisine,
-			borought: formData.city,
+			borough: formData.city,
 			address: {
 				building: formData.building || null,
 				street: formData.adresse,
