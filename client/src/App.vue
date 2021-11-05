@@ -47,10 +47,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.router-link {
-  color: black !important;
-  border-style: solid;
-  border-width: 2px;
-  padding: 3px;
-}
 </style>
