@@ -57,7 +57,7 @@
         ></md-input>
       </md-field>
 
-      <button class="md-button md-raised">Ajouter</button>
+      <button v-if="allowed" class="md-button md-raised">Ajouter</button>
     </form>
 
     <!-- Ajout restaurant réussi snackbar -->
@@ -94,6 +94,7 @@ export default {
 
     //Algolia Places
     instance: null,
+    allowed:false
   }),
   methods: {
     async ajouterRestaurant(event) {
@@ -157,7 +158,20 @@ export default {
       this.country = e.suggestion.country;
       this.lat = e.suggestion.latlng.lat;
       this.lng = e.suggestion.latlng.lng;
+      this.allowed = true;
     });
+
+    this.instance.on("clear", (e) => {
+      this.$emit("clear", e);
+      this.adresse = "";
+      this.zipcode = "";
+      this.city = "";
+      this.country = "";
+      this.lat = "";
+      this.lng = "";
+      this.allowed = false;
+    });
+
   },
   beforeDestroy() {
     // On réinitialise/détruit l'instance initialisée
