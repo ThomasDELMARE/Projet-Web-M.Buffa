@@ -6,6 +6,7 @@
 
     <br />
 
+    <!-- Code HTML concernant la recherche des restaurants -->
     <form>
       <label> Rechercher un restaurant : </label>
 
@@ -25,7 +26,8 @@
     </button>
     <button v-if="page === 0" disabled>Précédent</button>
 
-    <!-- J'ai mis un + 1 afin qu'on affiche "page 1" à la place de "page 0" au début -->
+    <!-- Nous avons mis un + 1 afin qu'on affiche "page 1" à la place de "page 0" au début -->
+
     <label> Page {{ page + 1 }} </label>
 
     <button v-if="page + 1 == nbPagesTotal || restaurants == 0" disabled>
@@ -40,6 +42,8 @@
     </button>
 
     <br /><br />
+
+    <!-- Cette partie concernera le nombre de restaurants choisis à afficher par l'utilisateur. -->
 
     <div>
       <input
@@ -57,6 +61,8 @@
     </div>
 
     <br />
+
+    <!-- Cette partie nous permettra de voir la liste des restaurants, leurs propriétés ainis que les actions possibles à faire sur ces derniers (suppression/détails). -->
 
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card>
       <md-table-toolbar>
@@ -264,7 +270,7 @@ export default {
       this.supprimerRestaurant(this.item);
     },
     onCancel() {
-      console.log("Disagreed");
+      return;
     },
     setItem(item) {
       this.item = item;
@@ -276,6 +282,7 @@ export default {
     }
   },
   mounted() {
+    // On regarde si l'utilisateur est connecté, s'il ne l'est pas il sera redirigé sur la page de connexion
     this.checkIfUserConnected();    
     // AVANT RENDU HTML
     this.getRestaurantsFromServer();

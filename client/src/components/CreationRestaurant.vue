@@ -2,6 +2,8 @@
   <div>
     <br />
 
+    <!-- Ce component sert à afficher la page de création des restaurants. On peut créer plus facilement un restaurant avec la librairie Algolia. -->
+
     <h1>Création d'un nouveau restaurant</h1>
 
     <form v-on:submit="ajouterRestaurant" style="width: 1200px; margin: auto">
@@ -127,7 +129,7 @@ export default {
       this.lat = "";
       this.lng = "";
     },
-    checkIfUserConnected() {
+    verifieUtilisateurConnecte() {
       if (
         localStorage.getItem("activeUser") == "null" ||
         localStorage.getItem("activeUser") == "" ||
@@ -138,15 +140,10 @@ export default {
     },
   },
   mounted() {
-    this.checkIfUserConnected();
-    // make sure Vue does not know about the input
-    // this way it can properly unmount
-    
+    this.verifieUtilisateurConnecte();    
     this.input = document.createElement("input");
-    // this.$el.appendChild(this.input);
     var restaurantId = document.getElementById('cuisine');
     restaurantId.insertAdjacentElement('afterend', this.input);
-
 
     this.instance = places({
       container: this.input,

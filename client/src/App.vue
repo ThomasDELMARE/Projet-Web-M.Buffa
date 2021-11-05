@@ -1,4 +1,5 @@
 <template>
+  <!-- Ici sera placée la barre de navigation présente en haut de chaque vue. Elle variera selon si l'utilisateur est connecté ou non -->
   <div id="app" style="margin: 0">
     <div v-if="activeUser != 'null'">
       <md-tabs class="md-primary" md-alignment="fixed" md-sync-route>

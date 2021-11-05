@@ -1,5 +1,8 @@
 <template>
   <div username="connexion">
+
+    <!-- Page de connexion affichée à l'utilisateur lorsque le LocalStorage n'a pas trouvé d'utilisateur actif. -->
+
     <br />
 
     <h1>Identifiez-vous afin de commander dans les restaurants !</h1>
@@ -117,13 +120,7 @@ export default {
   }),
   methods: {
     localStorageBuild() {
-      // Cas où il y a un utilisateur connecté
-      //   if (localStorage.getItem("activeUser") != "null") {
-      //     if (this.username != null || this.username != "") {
-      //       this.activeUser = localStorage.getItem("activeUser");
-      //     }
-      //   }
-
+      
       // On génère un utilisateur de base si il n'est pas déjà déclaré
       if (!localStorage.getItem("DELMARE")) {
         localStorage.setItem("DELMARE", "delmare2021");

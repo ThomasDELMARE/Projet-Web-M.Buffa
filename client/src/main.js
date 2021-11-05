@@ -23,7 +23,7 @@ Vue.component('l-marker', LMarker);
 
 Vue.config.productionTip = false
 
-// On définit des routes
+// On définit des routes afin de pouvoir se déplacer entre les différentes vues du projet
 const router = new VueRouter({
   routes:
     [

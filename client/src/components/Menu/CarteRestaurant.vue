@@ -4,6 +4,9 @@
     <div class="md-layout md-gutter">
       <div class="md-layout-item"></div>
       <div class="md-layout-item md-size-80">
+
+        <!-- Ici on affiche la liste de commande. On pourra ajouter et enlever des produits mais également vider et passer la commande. Le total de la commande s'affichera dynamiquement. -->
+
         <md-table v-model="commande" md-card>
           <md-table-toolbar>
             <h1 class="md-title">Commande</h1>
@@ -16,13 +19,13 @@
             <md-table-cell md-label="Prix">{{ item.prix }} €</md-table-cell>
             <md-table-cell md-label="Nombre">{{ item.nombre }}</md-table-cell>
             <md-table-cell md-label="Enlever un produit">
-              <md-button class="md-primary" @click="addProduitToCommande(item)"
+              <md-button class="md-primary" @click="ajouterProduitACommande(item)"
                 ><img width="24" height="24"
                   src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
               /></md-button>
               <md-button v-if="commande.includes(item)"
                 class="md-primary"
-                @click="minusProduitToCommande(item)"
+                @click="enleverProduitACommande(item)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
             </md-table-cell>
@@ -35,15 +38,15 @@
             md-content="Cette commande sera ajoutée à votre compte."
             md-confirm-text="Confirmer"
             md-cancel-text="Annuler"
-            @md-cancel="onCancelValidationCommande"
-            @md-confirm="onConfirmValidationCommande"
+            @md-cancel="annulerValidationCommande"
+            @md-confirm="confirmerValidationCommande"
           />
           <p>Total : {{ totalCommande }} €</p>
           <br />
           <md-button
             class="md-primary"
             v-if="this.commande.length > 0"
-            @click="showConfirmationCommande"
+            @click="afficherConfirmationCommande"
             ><img height="24px" width="24px"
               src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
           /></md-button>
@@ -54,8 +57,8 @@
             md-content="Vous ne pourrez pas récupérer le contenu de votre commande."
             md-confirm-text="Confirmer"
             md-cancel-text="Annuler"
-            @md-cancel="onCancelAnnulationCommande"
-            @md-confirm="onConfirmAnnulationCommande"
+            @md-cancel="annulerSuppressionCommande"
+            @md-confirm="confirmerSuppressionCommande"
           />
           <md-button
             class="md-primary"
@@ -69,15 +72,17 @@
       <div class="md-layout-item"></div>
     </div>
 
+    <!-- Affichage du menu midi ainsi que son ajout et suppression dans le menu commande. -->
+
     <div class="md-layout md-gutter">
       <div class="md-layout-item md-size-20">
-        <md-button class="md-primary" @click="addProduitToCommande(menu)"
+        <md-button class="md-primary" @click="ajouterProduitACommande(menu)"
           ><img
             src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
         /></md-button>
         <md-button v-if="commande.includes(menu)"
                 class="md-primary"
-                @click="minusProduitToCommande(menu)"
+                @click="enleverProduitACommande(menu)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
         <br />
@@ -99,6 +104,8 @@
         <br />
       </div>
 
+      <!-- Affichage de la carte des entrées, on affichera 3 produits aléatoirement. On pourra supprimer ou ajouter les différentes entrées. -->
+
       <div class="md-layout-item md-size-60">
         <md-table id="tableEntree" v-model="carteEntree" md-card>
           <md-table-toolbar>
@@ -111,18 +118,20 @@
             <md-table-cell md-label="Nom">{{ item.nom }}</md-table-cell>
             <md-table-cell md-label="Prix">{{ item.prix }} €</md-table-cell>
             <md-table-cell md-label="Ajouter au panier">
-              <md-button class="md-primary" @click="addProduitToCommande(item)"
+              <md-button class="md-primary" @click="ajouterProduitACommande(item)"
                 ><img
                   src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
               /></md-button>
               <md-button v-if="commande.includes(item)"
                 class="md-primary"
-                @click="minusProduitToCommande(item)"
+                @click="enleverProduitACommande(item)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
             </md-table-cell>
           </md-table-row>
         </md-table>
+
+        <!-- Affichage de la carte des plats, on affichera 3 produits aléatoirement. On pourra supprimer ou ajouter les différentes plats. -->
 
         <md-table id="tablePlat" v-model="cartePlat" md-card>
           <md-table-toolbar>
@@ -135,18 +144,20 @@
             <md-table-cell md-label="Nom">{{ item.nom }}</md-table-cell>
             <md-table-cell md-label="Prix">{{ item.prix }} €</md-table-cell>
             <md-table-cell md-label="Ajouter au panier">
-              <md-button class="md-primary" @click="addProduitToCommande(item)"
+              <md-button class="md-primary" @click="ajouterProduitACommande(item)"
                 ><img
                   src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
               /></md-button>
               <md-button v-if="commande.includes(item)"
                 class="md-primary"
-                @click="minusProduitToCommande(item)"
+                @click="enleverProduitACommande(item)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
             </md-table-cell>
           </md-table-row>
         </md-table>
+
+        <!-- Affichage de la carte des desserts, on affichera 3 produits aléatoirement. On pourra supprimer ou ajouter les différentes desserts. -->
 
         <md-table
           id="tableDessert"
@@ -164,29 +175,32 @@
             <md-table-cell md-label="Nom">{{ item.nom }}</md-table-cell>
             <md-table-cell md-label="Prix">{{ item.prix }} €</md-table-cell>
             <md-table-cell md-label="Ajouter au panier">
-              <md-button class="md-primary" @click="addProduitToCommande(item)"
+              <md-button class="md-primary" @click="ajouterProduitACommande(item)"
                 ><img
                   src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
               /></md-button>
               <md-button v-if="commande.includes(item)"
                 class="md-primary"
-                @click="minusProduitToCommande(item)"
+                @click="enleverProduitACommande(item)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
             </md-table-cell>
           </md-table-row>
         </md-table>
       </div>
+
+      <!-- Affichage du menu gastronomique ainsi que son ajout et suppression dans le menu commande. -->
+
       <div class="md-layout-item md-size-20">
         <md-button
           class="md-primary"
-          @click="addProduitToCommande(menuGastronomique)"
+          @click="ajouterProduitACommande(menuGastronomique)"
           ><img
             src="https://img.icons8.com/material-outlined/24/000000/plus--v1.png"
         /></md-button>
         <md-button v-if="commande.includes(menuGastronomique)"
                 class="md-primary"
-                @click="minusProduitToCommande(menuGastronomique)"
+                @click="enleverProduitACommande(menuGastronomique)"
                 ><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/000000/minus-sign.png"
               /></md-button>
         <br />
@@ -225,6 +239,7 @@
     <br />
     <br />
 
+    <!-- Snackbar permettant d'afficher la confirmation de la commande passée. -->
     <md-snackbar
       :md-position="position"
       :md-duration="duration"
@@ -283,7 +298,7 @@ export default {
     dataReady: false,
   }),
   methods: {
-    computeAllProducts() {
+    chargerProduits() {
       this.produits.forEach((p) => {
         if (p.type === "plat" && p.gastronomique == true) {
           this.listePlatsGastronomique.push(p);
@@ -306,7 +321,7 @@ export default {
         }
       });
     },
-    createMenu(gastronomique) {
+    creerMenu(gastronomique) {
       if (gastronomique == true) {
         let idEntree = parseInt(
           Math.random() * this.listeEntreesGastronomique.length
@@ -372,12 +387,12 @@ export default {
           5;
       }
     },
-    createCarte() {
-      this.createCarteEntree();
-      this.createCartePlat();
-      this.createCarteDessert();
+    creerCarte() {
+      this.creerCarteEntree();
+      this.creerCartePlat();
+      this.creerCarteDessert();
     },
-    createCarteEntree() {
+    creerCarteEntree() {
       let ids = [];
       let id;
       for (let i = 0; i < 3; i++) {
@@ -395,7 +410,7 @@ export default {
         this.carteEntree.push(this.listeEntrees[id]);
       });
     },
-    createCartePlat() {
+    creerCartePlat() {
       let ids = [];
       let id;
       for (let i = 0; i < 3; i++) {
@@ -413,7 +428,7 @@ export default {
         this.cartePlat.push(this.listePlats[id]);
       });
     },
-    createCarteDessert() {
+    creerCarteDessert() {
       let ids = [];
       let id;
       for (let i = 0; i < 3; i++) {
@@ -431,7 +446,7 @@ export default {
         this.carteDessert.push(this.listeDesserts[id]);
       });
     },
-    addProduitToCommande(item) {
+    ajouterProduitACommande(item) {
       let check = 0;
       this.commande.forEach((p) => {
         if (p.nom === item.nom) {
@@ -445,7 +460,7 @@ export default {
       }
       this.totalCommande += parseInt(item.prix);
     },
-    minusProduitToCommande(item) {
+    enleverProduitACommande(item) {
       if (item.nombre > 0) {
         item.nombre--;
         this.totalCommande -= parseInt(item.prix);
@@ -459,19 +474,19 @@ export default {
         }
       }
     },
-    onCancelValidationCommande() {
+    annulerValidationCommande() {
       return;
     },
-    onConfirmValidationCommande() {
+    confirmerValidationCommande() {
       this.passerCommande();
     },
-    showConfirmationCommande() {
+    afficherConfirmationCommande() {
       this.activeConfirmation = true;
     },
-    onCancelAnnulationCommande(){
+    annulerSuppressionCommande(){
       return;
     },
-    onConfirmAnnulationCommande(){
+    confirmerSuppressionCommande(){
       this.viderCommande();
     },
     showConfirmationAnnulationCommande(){
@@ -502,10 +517,10 @@ export default {
   },
   mounted() {
     this.produits = data.listeProduits;
-    this.computeAllProducts();
-    this.createMenu(false);
-    this.createMenu(true);
-    this.createCarte();
+    this.chargerProduits();
+    this.creerMenu(false);
+    this.creerMenu(true);
+    this.creerCarte();
     this.dataReady = true;
   },
 };

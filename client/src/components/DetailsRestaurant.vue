@@ -1,4 +1,5 @@
 <template>
+  <!-- Cette partie nous permet d'afficher le type de cuisine ainsi que le nom du restaurant -->
   <div id="DetailsRestaurant" v-if="dataReady">
     <br />
     <div v-if="dataReady && allowed">
@@ -20,6 +21,7 @@
           </l-map>
         </div>
       </div>  
+      <!-- Ici on appelle le component "Carte Restaurant" afin d'afficher la carte, les menus et la gestion de commande. -->
       <carte-restaurant></carte-restaurant>
     </div>
     <div v-if="dataReady && !allowed">
@@ -115,7 +117,7 @@ export default {
           this.affecterValeursRestaurant(r.restaurant);
         });
     },
-    putImage() {
+    afficherImage() {
       let data = new FormData();
       data.append("urlImg", this.urlImg);
       let url = "http://localhost:8080/api/restaurants/" + this.idRestaurant;
@@ -133,16 +135,16 @@ export default {
           console.log(err);
         });
     },
-    async searchImage() {
+    async chercherImage() {
       if (this.urlImg === null || this.urlImg === "null") {
         window.setImmediate = window.setTimeout;
         await client.search("restaurant " + this.nom).then((images) => {
           this.urlImg = images[0].url;
         });
-        this.putImage();
+        this.afficherImage();
       }
     },
-    checkIfUserConnected() {
+    verifieUtiliserConnecte() {
       if (
         localStorage.getItem("activeUser") == "null" ||
         localStorage.getItem("activeUser") == "" ||
@@ -153,7 +155,7 @@ export default {
     },
   },
   async mounted() {
-    this.checkIfUserConnected();
+    this.verifieUtiliserConnecte();
     await this.fetchRestaurant(this.idRestaurant);
     this.affecterValeursLeaflet();
 
@@ -163,7 +165,7 @@ export default {
       iconUrl: require("leaflet/dist/images/marker-icon.png"),
       shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
     });
-    await this.searchImage();
+    await this.chercherImage();
 
     if (localStorage.getItem("activeUser") != "null") {
       this.allowed = true;
