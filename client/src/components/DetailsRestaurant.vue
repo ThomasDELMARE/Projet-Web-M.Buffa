@@ -98,8 +98,8 @@ export default {
       this.cuisine = r.cuisine || "Donnée indisponible.";
       this.nom = r.name || "Donnée indisponible.";
       this.ville = r.borough || "Donnée indisponible.";
-      this.lat = r.address.coord[0];
-      this.long = r.address.coord[1];
+      this.lat = r.address.coord[1];
+      this.long = r.address.coord[0];
       this.urlImg = r.url || null;
     },
     affecterValeursLeaflet() {
