@@ -11,6 +11,12 @@
           to="/creation-restaurant"
         ></md-tab>
 
+        <md-tab
+          id="historique-commande"
+          md-label="Historique de commande"
+          to="/historique-commandes"
+        ></md-tab>
+
         <md-tab style="background-color:red"
           id="deconnexion"
           md-label="Deconnexion"

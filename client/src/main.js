@@ -13,6 +13,7 @@ import DetailsRestaurant from './components/DetailsRestaurant.vue'
 import CreationRestaurant from './components/CreationRestaurant.vue'
 import CarteRestaurant from './components/Menu/CarteRestaurant.vue'
 import Connexion from './components/Connexion.vue'
+import HistoriqueCommande from './components/HistoriqueCommande.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueMaterial);
@@ -46,6 +47,10 @@ const router = new VueRouter({
       {
         path: "/details-restaurant/:id/carte",
         component: CarteRestaurant,
+      },
+      {
+        path: "/historique-commandes",
+        component: HistoriqueCommande,
       }
     ],
   mode: 'history'

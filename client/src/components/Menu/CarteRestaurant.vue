@@ -470,6 +470,7 @@ export default {
         for (let i = 0; i < length; i++) {
           if (this.commande[i].nombre === 0) {
             this.commande.splice(i, 1);
+            length--;
           }
         }
       }
@@ -494,21 +495,27 @@ export default {
     },
     passerCommande() {
       let currentUser = localStorage.getItem("activeUser");
+      let date = new Date(Date.now());
+      let data = {
+        total: this.totalCommande,
+        date: date.toUTCString(),
+        commande: JSON.stringify(this.commande)
+      }
+      let stringData = JSON.stringify(data);
 
       if (!localStorage.getItem(currentUser + "Commandes")) {
-        localStorage.setItem(currentUser + "Commandes", this.commande);
+        localStorage.setItem(currentUser + "Commandes", '['+ stringData+ ']');
       } else {
         let currentListeCommandes = localStorage.getItem(
           currentUser + "Commandes"
         );
-        let newListCommandes = currentListeCommandes + this.commande;
+        let newListCommandes = currentListeCommandes.substring(0, currentListeCommandes.length-1);
+        console.log(newListCommandes)
+        newListCommandes += " , "+ stringData + "]";
         localStorage.setItem(currentUser + "Commandes", newListCommandes);
-      }
-
+      } 
       this.showSnackbarCommandeConfirmée = true;
-
-      this.commande = [];
-      this.totalCommande = 0;
+      this.viderCommande();
     },
     viderCommande(){
       this.commande = [];
