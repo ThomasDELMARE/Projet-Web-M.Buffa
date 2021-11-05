@@ -175,8 +175,7 @@ export default {
   },
   beforeDestroy() {
     // On réinitialise/détruit l'instance initialisée
-    this.instance.off();
-    this.instance.destroy();
+    delete this.instance;
   },
 };
 </script>
