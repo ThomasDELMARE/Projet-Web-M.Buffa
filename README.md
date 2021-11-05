@@ -121,4 +121,4 @@ Pour se connecter au site, voici vos identifiants :
 
 **Lien de notre Kanban** : https://trello.com/b/Ji2pmYLM/mini-projet-web  
 
-**Lien de notre vidéo de présentation du projet** :
+**Lien de notre vidéo de présentation du projet** : https://youtu.be/9bXquQ6WDWg
