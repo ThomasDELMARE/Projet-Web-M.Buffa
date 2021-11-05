@@ -59,14 +59,11 @@ export default {
         let currentUser = localStorage.getItem("activeUser");
         if (localStorage.getItem(currentUser + "Commandes")) {
             let dataStringCommande = localStorage.getItem(currentUser + "Commandes");
-            console.log(dataStringCommande)
             this.commandes = JSON.parse(dataStringCommande);
         }
     },
     detailCommande(item){
         this.commande = JSON.parse(item.commande);
-        console.log(this.commande)
-
         this.showDialog = true;
     }
   },
