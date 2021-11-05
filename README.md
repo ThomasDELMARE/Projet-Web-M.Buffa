@@ -58,7 +58,7 @@ Pour se connecter au site, voici vos identifiants :
 
 <br />
 
-  -  Possibilité de faire des **commandes** dans chacun des restaurants (+ persistance ?).
+  -  Possibilité de faire des **commandes** dans chacun des restaurants.
   
 <br />
 
@@ -118,8 +118,6 @@ Pour se connecter au site, voici vos identifiants :
 </div>
 
 <br />
-
-**Lien de la base de données utilisée** :  
 
 **Lien de notre Kanban** : https://trello.com/b/Ji2pmYLM/mini-projet-web  
 
