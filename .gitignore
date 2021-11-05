@@ -1,8 +1,2 @@
-S5 - Web/TP1/node_modules/
-
-S5 - Web/TP2/client/node_modules/
-S5 - Web/TP2/serveur/node_modules/
-S5 - Web/TP2/client_vue/expense/node_modules/
-
-S5 - Web/Mini-projet/client/node_modules/
-S5 - Web/Mini-projet/serveur/node_modules/
+client/node_modules/
+serveur/node_modules/
